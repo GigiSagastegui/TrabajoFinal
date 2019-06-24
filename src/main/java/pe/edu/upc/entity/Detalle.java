@@ -27,7 +27,7 @@ public class Detalle implements Serializable {
 	private String resultadoAuditoria;
 
 	@ManyToOne
-	@JoinColumn(name = "descripcionProceso")
+	@JoinColumn(name = "idProceso")
 	private Proceso proceso;
 
 	@ManyToOne

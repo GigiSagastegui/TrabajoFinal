@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/areas/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE') ")
 			//Informe
 			
-			.antMatchers("/informes/nuevo/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR') ")
+			.antMatchers("/informes/nuevo/**").access("hasRole('ROLE_GERENTE') ")
 			.antMatchers("/informes/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE') ")
 			
 			.antMatchers("/gerentes/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/bienvenido/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
 			//equipo
 			
-			.antMatchers("/equipos/nuevo/**").access("hasRole('ROLE_AUDITOR') or hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/equipos/nuevo/**").access("hasRole('ROLE_AUDITOR') ")
 			.antMatchers("/equipos/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')").and()
 
 					.formLogin().loginPage("/login").loginProcessingUrl("/j_spring_security_check")

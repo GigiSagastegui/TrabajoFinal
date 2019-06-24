@@ -30,7 +30,7 @@
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{proceso.idProceso}">
 							<option th:each="pro: ${listaProcesos}"
-								th:value="${pro.idProceso}" th:text="${pro.nombreProceso}"
+								th:value="${pro.idProceso}" th:text="${pro.idProceso}"
 								th:selected="(${pro.idProceso} == *{proceso.idProceso})"></option>
 						</select>
 					</div>
@@ -41,9 +41,21 @@
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{auditoria.idAuditoria}">
 							<option th:each="aud: ${listaAuditorias}"
-								th:value="${aud.idAuditoria}" th:text="${aud.descripcionAuditoria}"
+								th:value="${aud.idAuditoria}" th:text="${aud.idAuditoria}"
 								th:selected="(${aud.idAuditoria} == *{auditoria.idAuditoria})"></option>
 						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="resultadoAuditoria" class="col-sm-2 col-form-label">Resultado
+						Auditoria</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{resultadoAuditoria}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('resultadoAuditoria')}"
+							th:errors="*{resultadoAuditoria}"></small>
 					</div>
 				</div>
 

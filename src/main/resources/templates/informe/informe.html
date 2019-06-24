@@ -18,8 +18,7 @@
 						<input type="text" th:field="*{idInforme}" class="form-control"
 							th:errorclass="'form-control alert-danger'" /> <small
 							class="form-text text-danger"
-							th:if="${#fields.hasErrors('idInforme')}"
-							th:errors="*{idInforme}"></small>
+							th:if="${#fields.hasErrors('idInforme')}" th:errors="*{idInforme}"></small>
 					</div>
 				</div>
 
@@ -35,29 +34,29 @@
 						</select>
 					</div>
 				</div>
-				
+
 				<div class="form-group row">
-					<label for="informe" class="col-sm-2 col-form-label">Descripción de informe:</label>
+					<label for="tarea" class=" col-sm-2 col-form-label">Tarea:</label>
 					<div class="col-sm-6">
-						<input type="text" th:field="*{descripcionInforme}"
-							class="form-control" th:errorclass="'form-control alert-danger'" />
-						<small class="form-text text-danger"
+						<select class="form-control" th:field="*{tarea.idTarea}">
+							<option th:each="tar: ${listaTareas}"
+								th:value="${tar.idTarea}" th:text="${tar.idTarea}"
+								th:selected="(${tar.idTarea} == *{tarea.idTarea})"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="descripcionInforme" class="col-sm-2 col-form-label">Descripcion:</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{descripcionInforme}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
 							th:if="${#fields.hasErrors('descripcionInforme')}"
 							th:errors="*{descripcionInforme}"></small>
 					</div>
 				</div>
 
-
-				<div class="form-group row">
-					<label for="proceso" class=" col-sm-2 col-form-label">Proceso:</label>
-					<div class="col-sm-6">
-						<select class="form-control" th:field="*{proceso.idProceso}">
-							<option th:each="pro: ${listaProcesos}"
-								th:value="${pro.idProceso}" th:text="${pro.nombreProceso}"
-								th:selected="(${pro.idProceso} == *{proceso.idProceso})"></option>
-						</select>
-					</div>
-				</div>
 
 				<div class="form-group row">
 					<div class="col-sm-6" align="center">

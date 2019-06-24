@@ -25,20 +25,12 @@ public class Informe implements Serializable {
 
 	@NotBlank(message = "No puede estar en blanco")
 	@NotEmpty(message = "Ingresa la descripcion del informe")
-	@Column(name = "descripcionInforme", nullable = false, length = 3000)
+	@Column(name = "descripcionInforme", nullable = false, length = 45)
 	private String descripcionInforme;
 
 	@ManyToOne
 	@JoinColumn(name = "idTarea")
 	private Tarea tarea;
-	
-	@ManyToOne
-	@JoinColumn(name = "idAuditoria")
-	private Auditoria auditoria;
-	
-	@ManyToOne
-	@JoinColumn(name = "idProceso")
-	private Proceso proceso;
 
 	@ManyToOne
 	@JoinColumn(name = "idPersona")
@@ -49,15 +41,12 @@ public class Informe implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Informe(int idInforme, String descripcionInforme, Tarea tarea, Auditor auditor,
-			Proceso proceso, Auditoria auditoria) {
+	public Informe(int idInforme, String descripcionInforme, Tarea tarea, Auditor auditor) {
 		super();
 		this.idInforme = idInforme;
 		this.descripcionInforme = descripcionInforme;
 		this.tarea = tarea;
 		this.auditor = auditor;
-		this.auditoria=auditoria;
-		this.proceso=proceso;
 	}
 
 	
@@ -95,22 +84,6 @@ public class Informe implements Serializable {
 		this.auditor = auditor;
 	}
 
-	public Auditoria getAuditoria() {
-		return auditoria;
-	}
-
-	public void setAuditoria(Auditoria auditoria) {
-		this.auditoria = auditoria;
-	}
-
-	public Proceso getProceso() {
-		return proceso;
-	}
-
-	public void setProceso(Proceso proceso) {
-		this.proceso = proceso;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -133,5 +106,4 @@ public class Informe implements Serializable {
 		return true;
 	}
 
-	
 }

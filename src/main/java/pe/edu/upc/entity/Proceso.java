@@ -21,34 +21,25 @@ public class Proceso implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProceso;
-	
-	@NotEmpty(message = "Ingresa el nombre del proceso.")
-	@Column(name = "nombreProceso", nullable = false, length = 3000)
-	private String nombreProceso;
 
 	@NotEmpty(message = "Ingresa la descripcion del proceso")
-	@Column(name = "descripcionProceso", nullable = false, length = 3000)
+	@Column(name = "descripcionProceso", nullable = false, length = 45)
 	private String descripcionProceso;
 
 	@ManyToOne
 	@JoinColumn(name = "idArea")
 	private Area area;
-	
-	private String foto;
 
 	public Proceso() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Proceso(int idProceso, String descripcionProceso, Area area, String nombreProceso,
-			String foto) {
+	public Proceso(int idProceso, String descripcionProceso, Area area) {
 		super();
 		this.idProceso = idProceso;
 		this.descripcionProceso = descripcionProceso;
 		this.area = area;
-		this.nombreProceso=nombreProceso;
-		this.foto=foto;
 	}
 
 	public int getIdProceso() {
@@ -73,22 +64,6 @@ public class Proceso implements Serializable {
 
 	public void setArea(Area area) {
 		this.area = area;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
-	public String getNombreProceso() {
-		return nombreProceso;
-	}
-
-	public void setNombreProceso(String nombreProceso) {
-		this.nombreProceso = nombreProceso;
 	}
 
 	@Override

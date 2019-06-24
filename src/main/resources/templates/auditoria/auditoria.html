@@ -104,7 +104,7 @@
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{proceso.idProceso}">
 							<option th:each="c: ${listaProcesos}" th:value="${c.idProceso}"
-								th:text="${c.nombreProceso}"
+								th:text="${c.descripcionProceso}"
 								th:selected="(${c.idProceso} == *{proceso.idProceso})"></option>
 						</select>
 					</div>
