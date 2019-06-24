@@ -25,12 +25,17 @@ public class Informe implements Serializable {
 
 	@NotBlank(message = "No puede estar en blanco")
 	@NotEmpty(message = "Ingresa la descripcion del informe")
-	@Column(name = "descripcionInforme", nullable = false, length = 45)
+	@Column(name = "descripcionInforme", nullable = false, length = 3000)
 	private String descripcionInforme;
 
+	@NotBlank(message = "No puede estar en blanco")
+	@NotEmpty(message = "Ingrese el tipo de informe")
+	@Column(name = "tipoInforme", nullable = false, length = 3000)
+	private String tipoInforme;
+
 	@ManyToOne
-	@JoinColumn(name = "idTarea")
-	private Tarea tarea;
+	@JoinColumn(name = "idProceso")
+	private Proceso proceso;
 
 	@ManyToOne
 	@JoinColumn(name = "idPersona")
@@ -41,14 +46,16 @@ public class Informe implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Informe(int idInforme, String descripcionInforme, Tarea tarea, Auditor auditor) {
+	public Informe(int idInforme, String descripcionInforme, String tipoInforme, Proceso proceso, Auditor auditor) {
 		super();
 		this.idInforme = idInforme;
 		this.descripcionInforme = descripcionInforme;
-		this.tarea = tarea;
+		this.tipoInforme = tipoInforme;
+		this.proceso = proceso;
 		this.auditor = auditor;
 	}
 
+	
 	
 	
 	
@@ -68,12 +75,20 @@ public class Informe implements Serializable {
 		this.descripcionInforme = descripcionInforme;
 	}
 
-	public Tarea getTarea() {
-		return tarea;
+	public String getTipoInforme() {
+		return tipoInforme;
 	}
 
-	public void setTarea(Tarea tarea) {
-		this.tarea = tarea;
+	public void setTipoInforme(String tipoInforme) {
+		this.tipoInforme = tipoInforme;
+	}
+
+	public Proceso getProceso() {
+		return proceso;
+	}
+
+	public void setProceso(Proceso proceso) {
+		this.proceso = proceso;
 	}
 
 	public Auditor getAuditor() {

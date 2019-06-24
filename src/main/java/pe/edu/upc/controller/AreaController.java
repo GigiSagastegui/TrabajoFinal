@@ -41,14 +41,14 @@ public class AreaController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardarArea(@Valid Area area, BindingResult result, Model model, SessionStatus status)
+	public String guardarArea(@Valid Area area,  RedirectAttributes flash, BindingResult result, Model model, SessionStatus status)
 			throws Exception {
 		if (result.hasErrors()) {
 			model.addAttribute("listaGerentes", geService.listar());
 			return "/area/area";
 		} else {
 			aService.insertar(area);
-			model.addAttribute("mensaje", "Se guardó correctamente");
+			flash.addFlashAttribute("mensaje", "Se guardó correctamente");
 			status.setComplete();
 			return "redirect:/areas/listar";
 		}

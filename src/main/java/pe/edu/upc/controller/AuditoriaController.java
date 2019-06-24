@@ -22,28 +22,35 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pe.edu.upc.entity.Auditoria;
 import pe.edu.upc.service.IAuditoriaService;
 import pe.edu.upc.service.IProcesoService;
+import pe.edu.upc.service.IProgramaService;
 
 @Controller
 @RequestMapping("/auditorias")
 public class AuditoriaController {
-	
+
 	@Autowired
 	private IAuditoriaService aService;
-	
+
 	@Autowired
 	private IProcesoService prService;
-	
+
+	@Autowired
+	private IProgramaService pService;
+
 	@GetMapping("/nuevo")
 	public String nuevoAuditoria(Model model) {
 		model.addAttribute("auditoria", new Auditoria());
 		model.addAttribute("listaProcesos", prService.listar());
+		model.addAttribute("listaProgramas", pService.listar());
 		return "auditoria/auditoria";
 	}
-	
+
 	@PostMapping("/guardar")
 	public String guardarAuditoria(@Valid Auditoria auditoria, BindingResult result, Model model, SessionStatus status)
 			throws Exception {
 		if (result.hasErrors()) {
+			model.addAttribute("listaProcesos", prService.listar());
+			model.addAttribute("listaProgramas", pService.listar());
 			return "/auditoria/auditoria";
 		} else {
 			aService.insertar(auditoria);
@@ -52,7 +59,7 @@ public class AuditoriaController {
 			return "redirect:/auditorias/listar";
 		}
 	}
-	
+
 	@GetMapping("/listar")
 	public String listarAuditorias(Model model) {
 		try {
@@ -63,7 +70,7 @@ public class AuditoriaController {
 		}
 		return "/auditoria/listaAuditoria";
 	}
-	
+
 	@GetMapping("/detalle/{id}")
 	public String detailsAuditoria(@PathVariable(value = "id") int id, Model model) {
 		try {
@@ -80,7 +87,7 @@ public class AuditoriaController {
 		}
 		return "/auditoria/auditoria";
 	}
-	
+
 	@RequestMapping("/buscar")
 	public String buscar(Map<String, Object> model, @ModelAttribute Auditoria auditoria) throws ParseException {
 
@@ -88,7 +95,21 @@ public class AuditoriaController {
 
 		auditoria.setEstado(auditoria.getEstado());
 		listaAuditorias = aService.buscarEstado(auditoria.getEstado());
-
+		if (listaAuditorias.isEmpty()) {
+			listaAuditorias = aService.buscarDescripcion(auditoria.getEstado());
+		}
+		
+		
+		if (listaAuditorias.isEmpty()) {
+			listaAuditorias = aService.buscarNombreCaso(auditoria.getEstado());
+		}
+		if (listaAuditorias.isEmpty()) {
+			listaAuditorias = aService.buscarPrioridad(auditoria.getEstado());
+		}
+		if (listaAuditorias.isEmpty()) {
+			listaAuditorias = aService.buscarResultado(auditoria.getEstado());
+		}
+		
 		if (listaAuditorias.isEmpty()) {
 			model.put("mensaje", "No se encontró");
 		}
@@ -96,7 +117,7 @@ public class AuditoriaController {
 		return "auditoria/listaAuditoria";
 
 	}
-	
+
 	@GetMapping(value = "/ver/{id}")
 	public String ver(@PathVariable(value = "id") Integer id, Map<String, Object> model, RedirectAttributes flash) {
 
@@ -110,7 +131,7 @@ public class AuditoriaController {
 
 		return "auditoria/ver";
 	}
-	
+
 	@RequestMapping("/modificar/{id}")
 	public String modificar(@PathVariable int id, Model model, RedirectAttributes objRedir) {
 		Optional<Auditoria> objAudi = aService.listarId(id);

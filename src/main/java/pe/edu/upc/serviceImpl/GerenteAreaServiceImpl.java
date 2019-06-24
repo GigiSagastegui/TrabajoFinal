@@ -20,9 +20,14 @@ public class GerenteAreaServiceImpl implements IGerenteAreaService {
 
 	@Override
 	@Transactional
-	public void insertar(Gerente gerente) {
+	public boolean insertar(Gerente gerente) {
 
-		gR.save(gerente);
+		Gerente objGerente = gR.save(gerente);
+		if (objGerente == null) {
+			return false;
+		} else {
+			return true;
+		}
 
 	}
 
@@ -55,6 +60,13 @@ public class GerenteAreaServiceImpl implements IGerenteAreaService {
 	public List<Gerente> buscarName(String namePersona) {
 
 		return gR.findByNamePersona(namePersona);
+	}
+
+	@Override
+	public List<Gerente> buscarNombreCaso(String namePersona) {
+		// TODO Auto-generated method stub
+
+		return gR.findByNamePersonaLikeIgnoreCase(namePersona);
 	}
 
 }

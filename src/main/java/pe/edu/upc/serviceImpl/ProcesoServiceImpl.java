@@ -45,4 +45,16 @@ public class ProcesoServiceImpl implements IProcesoService {
 		return prR.buscarArea(nombreArea);
 	}
 
+	@Override
+	public List<Proceso> buscarNombre(String nombreProceso) {
+		
+		return prR.findByNombreProceso(nombreProceso);
+	}
+
+	@Override
+	public List<Proceso> buscarNombreCaso(String namePersona) {
+		
+		return prR.findByNombreProcesoLikeIgnoreCase(namePersona);
+	}
+
 }

@@ -33,7 +33,7 @@
 				</div>
 
 				<div class="form-group row">
-					<label for="gerente" class=" col-sm-2 col-form-label">Gerente:</label>
+					<label for="gerente" class=" col-sm-2 col-form-label">Gerente</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{gerente.idPersona}">
 							<option th:each="g: ${listaGerentes}" th:value="${g.idPersona}"

@@ -37,6 +37,9 @@ public class GerenteAreaController {
 	private IGerenteAreaService gService;
 
 	@Autowired
+	private PersonaController personaEncryp;
+
+	@Autowired
 	private IUploadFileService uploadFileService;
 
 	@GetMapping(value = "/uploads/{filename:.+}")
@@ -55,8 +58,6 @@ public class GerenteAreaController {
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"")
 				.body(recurso);
 	}
-
-	
 
 	@GetMapping("/nuevo")
 	public String nuevoGerente(Model model) {
@@ -86,15 +87,19 @@ public class GerenteAreaController {
 					e.printStackTrace();
 				}
 
-				flash.addFlashAttribute("info", "Has subido correctamente '" + uniqueFilename + "'");
+				flash.addFlashAttribute("info", "Se ha registrado correctamente");
 				gerente.setFoto(uniqueFilename);
 			}
 
 		}
-		gService.insertar(gerente);
-		model.addAttribute("mensaje", "Se guardó correctamente");
-		status.setComplete();
-		return "redirect:/gerentes/listar";
+		gerente.setPasswordUsuario(personaEncryp.getPasswordEncoder2().encode(gerente.getPasswordUsuario()));
+		boolean flag = gService.insertar(gerente);
+		if (flag) {
+			return "redirect:/gerentes/listar";
+		} else {
+			model.addAttribute("mensaje", "Ocurrió un error");
+			return "redirect:/gerentes/nuevo";
+		}
 	}
 
 	@GetMapping("/listar")
@@ -137,6 +142,11 @@ public class GerenteAreaController {
 			listaGerentes = gService.buscarDni(gerente.getNamePersona());
 		}
 
+		if (listaGerentes.isEmpty()) {
+			listaGerentes = gService.buscarNombreCaso(gerente.getNamePersona());
+					
+		}
+		
 		if (listaGerentes.isEmpty()) {
 			model.put("mensaje", "No se encontró");
 		}

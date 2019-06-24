@@ -41,8 +41,9 @@
 						<thead class="bg-dark mb-3 text-white">
 							<tr>
 								<th>Id</th>
-								<th>Descripción de Auditoria</th>
+								<th>Auditoria</th>
 								<th>Proceso</th>
+								<th>Programa</th>
 								<th>Estado</th>
 								<th>Prioridad</th>
 								<th>Resultado</th>
@@ -57,7 +58,10 @@
 									th:href="@{/auditorias/ver/} + ${auditoria.idAuditoria}"
 									th:text="${auditoria.idAuditoria}"></a></td>
 								<td th:text="${auditoria.descripcionAuditoria}"></td>
-								<td th:text="${auditoria.proceso.descripcionProceso}"></td>
+								<td><a class="btn btn-primary btn-xs"
+									th:href="@{/procesos/ver/} + ${auditoria.proceso.idProceso}"
+									th:text="${auditoria.proceso.nombreProceso}"></a></td>								
+								<td th:text="${auditoria.programa.nombrePrograma}"></td>
 								<td th:text="${auditoria.estado}"></td>
 								<td th:text="${auditoria.prioridad}"></td>
 								<td th:text="${auditoria.resultado}"></td>

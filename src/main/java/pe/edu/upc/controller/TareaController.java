@@ -38,14 +38,14 @@ public class TareaController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardarTarea(@Valid Tarea tarea, BindingResult result, Model model, SessionStatus status)
+	public String guardarTarea(@Valid Tarea tarea,RedirectAttributes flash, BindingResult result, Model model, SessionStatus status)
 			throws Exception {
 		if (result.hasErrors()) {
 			model.addAttribute("listaProcesos", pService.listar());
 			return "/tarea/tarea";
 		} else {
 			tService.insertar(tarea);
-			model.addAttribute("mensaje", "Se guardó correctamente");
+			flash.addFlashAttribute("mensaje", "Se guardó correctamente");
 			status.setComplete();
 			return "redirect:/tareas/listar";
 		}

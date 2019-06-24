@@ -44,7 +44,7 @@ public class EquipoController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardarEquipo(@Valid Equipo equipo, BindingResult result, Model model, SessionStatus status)
+	public String guardarEquipo(@Valid Equipo equipo,  RedirectAttributes flash, BindingResult result, Model model, SessionStatus status)
 			throws Exception {
 		if (result.hasErrors()) {
 			model.addAttribute("listaAuditores", auService.listar());
@@ -52,7 +52,7 @@ public class EquipoController {
 			return "/equipo/equipo";
 		} else {
 			eService.insertar(equipo);
-			model.addAttribute("mensaje", "Se guardó correctamente");
+			flash.addFlashAttribute("mensaje", "Se guardó correctamente");
 			status.setComplete();
 			return "redirect:/equipos/listar";
 		}
@@ -111,7 +111,7 @@ public class EquipoController {
 		}
 
 		if (listaEquipos.isEmpty()) {
-			model.put("mensaje", "No se encontrÃ³");
+			model.put("mensaje", "No se encontró");
 		}
 		model.put("listaEquipos", listaEquipos);
 		return "equipo/listaEquipo";

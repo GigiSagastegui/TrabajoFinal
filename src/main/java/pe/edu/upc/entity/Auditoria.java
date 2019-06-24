@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,15 +38,19 @@ public class Auditoria implements Serializable {
 	@JoinColumn(name = "idProceso")
 	private Proceso proceso;
 
+	@ManyToOne
+	@JoinColumn(name = "idPrograma")
+	private Programa Programa;
+
 	@NotNull(message = "La fecha es obligatoria")
-	@Future(message = "La fecha debe estar en el futuro")
+	@Past(message = "La fecha debe estar en el pasado.")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaInicioAuditoria")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaInicioAuditoria;
 
 	@NotNull(message = "La fecha es obligatoria")
-	@Future(message = "La fecha debe estar en el futuro")
+	@Future(message = "La fecha debe estar en el futuro.")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaFinAuditoria")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -68,14 +73,13 @@ public class Auditoria implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Auditoria(int idAuditoria, String descripcionAuditoria, Proceso proceso, Date fechaInicioAuditoria,
-			Date fechaFinAuditoria, String estado,
-
-			String prioridad, String resultado) {
+	public Auditoria(int idAuditoria, String descripcionAuditoria, Proceso proceso, Programa programa,
+			Date fechaInicioAuditoria, Date fechaFinAuditoria, String estado, String prioridad, String resultado) {
 		super();
 		this.idAuditoria = idAuditoria;
 		this.descripcionAuditoria = descripcionAuditoria;
 		this.proceso = proceso;
+		this.Programa = programa;
 		this.fechaInicioAuditoria = fechaInicioAuditoria;
 		this.fechaFinAuditoria = fechaFinAuditoria;
 		this.estado = estado;
@@ -105,6 +109,14 @@ public class Auditoria implements Serializable {
 
 	public void setProceso(Proceso proceso) {
 		this.proceso = proceso;
+	}
+
+	public Programa getPrograma() {
+		return Programa;
+	}
+
+	public void setPrograma(Programa programa) {
+		Programa = programa;
 	}
 
 	public Date getFechaInicioAuditoria() {

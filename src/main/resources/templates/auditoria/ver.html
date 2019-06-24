@@ -24,6 +24,18 @@
 								<td th:text="${auditoria.descripcionAuditoria}"></td>
 							</tr>
 							<tr>
+								<td>Proceso</td>
+								<td th:text="${auditoria.proceso.nombreProceso}"></td>
+							</tr>
+							<tr>
+								<td>Descripción de Proceso</td>
+								<td th:text="${auditoria.proceso.descripcionProceso}"></td>
+							</tr>
+							<tr>
+								<td>Descripción del Programa de Auditoria</td>
+								<td th:text="${auditoria.programa.nombrePrograma}"></td>
+							</tr>
+							<tr>
 								<td>Estado</td>
 								<td th:text="${auditoria.estado}"></td>
 							</tr>
@@ -43,10 +55,7 @@
 								<td>Fecha de Fin</td>
 								<td th:text="${auditoria.fechaFinAuditoria}"></td>
 							</tr>
-							<tr>
-								<td>Proceso</td>
-								<td th:text="${auditoria.proceso.descripcionProceso}"></td>
-							</tr>
+
 						</tbody>
 
 					</table>

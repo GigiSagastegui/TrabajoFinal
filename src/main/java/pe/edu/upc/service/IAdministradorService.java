@@ -19,4 +19,6 @@ public interface IAdministradorService {
 
 	List<Administrador> buscarName(String namePersona);
 
+	
+	List<Administrador> buscarNombreCaso(String namePersona);
 }

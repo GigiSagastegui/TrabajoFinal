@@ -17,4 +17,5 @@ public interface GerenteAreaRepository extends JpaRepository<Gerente, Integer> {
 	@Query("from Gerente g where g.namePersona like %:namePersona%")
 	List<Gerente> findByNamePersona(String namePersona);
 
+	public List<Gerente> findByNamePersonaLikeIgnoreCase(String term);
 }

@@ -17,7 +17,7 @@ public interface AdministradorRepository extends JpaRepository<Administrador, In
 	@Query("from Administrador a where a.namePersona like %:namePersona%")
 	List<Administrador> findByNamePersona(String namePersona);
 	
-	
+	public List<Administrador> findByNamePersonaLikeIgnoreCase(String term);
 
 	
 }

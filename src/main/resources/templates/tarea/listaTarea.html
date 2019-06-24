@@ -32,7 +32,7 @@
 							<tr th:each="tarea:${listaTareas}">
 								<td th:text="${tarea.idTarea}"></td>
 								<td th:text="${tarea.descripcionTarea}"></td>
-								<td th:text="${tarea.proceso.idProceso}"></td>
+								<td th:text="${tarea.proceso.nombreProceso}"></td>
 
 								<td align="center"><a
 									th:href="@{'/tareas/modificar/' + ${tarea.idTarea}}"><span

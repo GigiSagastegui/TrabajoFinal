@@ -13,4 +13,9 @@ public interface IAuditoriaService {
 	List<Auditoria> listar();
 	List<Auditoria> buscarEstado(String estado);
 	
+	
+	List<Auditoria> buscarResultado(String resultado);
+	List<Auditoria> buscarPrioridad(String prioridad);
+	List<Auditoria> buscarDescripcion(String descripcionAuditoria);
+	List<Auditoria> buscarNombreCaso(String descripcionAuditoria);
 }

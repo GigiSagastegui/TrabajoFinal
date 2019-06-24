@@ -20,8 +20,13 @@ public class AuditorServiceImpl implements IAuditorService {
 
 	@Override
 	@Transactional
-	public void insertar(Auditor auditor) {
-		aR.save(auditor);
+	public boolean insertar(Auditor auditor) {
+		Auditor objAuditor = aR.save(auditor);
+		if (objAuditor == null) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	@Override
@@ -53,6 +58,12 @@ public class AuditorServiceImpl implements IAuditorService {
 	public List<Auditor> buscarName(String namePersona) {
 
 		return aR.findByNamePersona(namePersona);
+	}
+
+	@Override
+	public List<Auditor> buscarNombreCaso(String namePersona) {
+		
+		return aR.findByNamePersonaLikeIgnoreCase(namePersona);
 	}
 
 }

@@ -15,4 +15,8 @@ public interface IProcesoService {
 	List<Proceso> listar();
 
 	List<Proceso> buscarArea(String nombreArea);
+	
+	List<Proceso> buscarNombre(String nombreProceso);
+	
+	List<Proceso> buscarNombreCaso(String namePersona);
 }

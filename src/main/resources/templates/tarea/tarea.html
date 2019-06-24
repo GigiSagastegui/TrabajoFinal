@@ -8,7 +8,7 @@
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container">
 		<div class="card bg-light">
-			<div class="card-header text-black bg-blue">Registro de Proceso</div>
+			<div class="card-header text-black bg-blue">Registro de Tarea</div>
 			<form th:action="@{/tareas/guardar}" th:object="${tarea}"
 				method="post" enctype="multipart/form-data">
 				<div class="form-group row">
@@ -34,11 +34,11 @@
 				</div>
 
 				<div class="form-group row">
-					<label for="proceso" class=" col-sm-2 col-form-label">Proceso:</label>
+					<label for="proceso" class=" col-sm-2 col-form-label">Proceso</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{proceso.idProceso}">
 							<option th:each="p: ${listaProcesos}" th:value="${p.idProceso}"
-								th:text="${p.idProceso}"
+								th:text="${p.nombreProceso}"
 								th:selected="(${p.idProceso} == *{proceso.idProceso})"></option>
 						</select>
 					</div>

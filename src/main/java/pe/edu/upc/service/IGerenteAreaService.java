@@ -8,7 +8,7 @@ import pe.edu.upc.entity.Gerente;
 
 public interface IGerenteAreaService {
 
-	public void insertar(Gerente gerente);
+	public boolean insertar(Gerente gerente);
 
 	public void modificar(Gerente gerente);
 
@@ -21,5 +21,6 @@ public interface IGerenteAreaService {
 	List<Gerente> buscarDni(String dniPersona);
 
 	List<Gerente> buscarName(String namePersona);
-	
+
+	List<Gerente> buscarNombreCaso(String namePersona);
 }

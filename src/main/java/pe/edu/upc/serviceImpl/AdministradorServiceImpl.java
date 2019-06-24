@@ -58,6 +58,12 @@ public class AdministradorServiceImpl implements IAdministradorService{
 		
 		return aR.findByNamePersona(namePersona);
 	}
+
+	@Override
+	public List<Administrador> buscarNombreCaso(String namePersona) {
+		
+		return aR.findByNamePersonaLikeIgnoreCase(namePersona);
+	}
 	
 	
 

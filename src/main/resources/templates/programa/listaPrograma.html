@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+		<div align="right">
+			<a th:href="@{/programas/nuevo}" id="add-row" type="button"
+				class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+		</div>
+
+	
+
+	<div class="card">
+		<div class="card-header text-white bg-dark mb-3">Programas de Auditoria</div>
+		<div class="card-body">
+
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead class="bg-dark mb-3 text-white">
+						<tr>
+							<th>Id</th>
+							<th>Programa</th>
+							<th>Objetivo</th>
+							<th>Alcance</th>
+							<th align="center">Operación</th>
+						</tr>
+					</thead>
+					<tbody id="programa-list">
+						<tr th:each="programa:${listaProgramas}">
+							<td><a class="btn btn-info btn-xs"
+									th:href="@{/programas/ver/} + ${programa.idPrograma}"
+									th:text="${programa.idPrograma}"></a></td>
+							<td th:text="${programa.nombrePrograma}"></td>
+							<td th:text="${programa.objetivo}"></td>
+							<td th:text="${programa.alcance}"></td>
+
+							<td align="center"><a
+								th:href="@{'/programas/modificar/' + ${programa.idPrograma}}"><span
+									class="glyphicon glyphicon-leaf"></span></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<p th:text="${mensaje}"></p>
+			</div>
+		</div>
+		</div>
+	</div>
+	
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

@@ -48,10 +48,36 @@
 						th:href="@{/detalles/listar}">Auditoria Detalles</a></li>
 					<li class="nav-item"><a class="nav-link" href="#about"
 						th:href="@{/informes/listar}">Informes</a></li>
+						<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/programas/listar}">Programas</a></li>
+
 
 				</ul>
+				<ul class="navbar-nav navbar-right">
+
+					<li class="nav-link">
+
+						<form id="logoutForm" th:action="@{/j_spring_security_logout}" method="post">
+							<button class="btn btn-dark"
+								onclick="document.getElementById('logoutForm').submit();"
+								type="submit">Cerrar Sesion</button>
+						</form>
+					</li>
+				</ul>
+
 			</div>
+
 		</nav>
+		
+		</div>
+
+		<div class="alert alert-success" th:if="${success != null}"
+			th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="${error}"></div>
+		<div class="alert alert-info" th:if="${info != null}"
+			th:text="${info}"></div>
+
 	</header>
 
 

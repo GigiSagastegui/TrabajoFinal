@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PrincipalController {
 
 	@RequestMapping("/")
-	public String irPersona(Map<String, Object> model) {
+	public String irLogin(Map<String, Object> model) {
 		return "login";
 	}
 		

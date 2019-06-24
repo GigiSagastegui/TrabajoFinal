@@ -87,7 +87,7 @@ public class AdministradorController {
 					e.printStackTrace();
 				}
 
-				flash.addFlashAttribute("info", "Has subido correctamente '" + uniqueFilename + "'");
+				flash.addFlashAttribute("info", "Se ha registrado correctamente");
 				administrador.setFoto(uniqueFilename);
 			}
 
@@ -150,6 +150,11 @@ public class AdministradorController {
 
 		if (listaAdministradores.isEmpty()) {
 			listaAdministradores = aService.buscarDni(administrador.getNamePersona());
+		}
+		
+		
+		if (listaAdministradores.isEmpty()) {
+			listaAdministradores = aService.buscarNombreCaso(administrador.getNamePersona());
 		}
 
 		if (listaAdministradores.isEmpty()) {

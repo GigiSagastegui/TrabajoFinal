@@ -8,13 +8,13 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-header text-white bg-dark mb-3">Reporte de
-				Auditorías</div>
+				Auditoría</div>
 			<div class="card-body">
 
 				<table class="table table-white">
 					<tbody>
 						<tr>
-							<td>CODIGO DE DETALLE</td>
+							<td>Id Detalle</td>
 							<td th:text="${detalle.idDetalle}"></td>
 						</tr>
 
@@ -22,16 +22,20 @@
 							<td>Auditoría</td>
 							<td th:text="${detalle.auditoria.descripcionAuditoria}"></td>
 						</tr>
-
+						
 						<tr>
-							<td>Proceso</td>
-							<td th:text="${detalle.proceso.nombreProceso}"></td>
+							<td>Programa</td>
+							<td th:text="${detalle.auditoria.programa.nombrePrograma}"></td>
 						</tr>
-
 						<tr>
-							<td>Descripción de Proceso</td>
-							<td th:text="${detalle.proceso.descripcionProceso}"></td>
+							<td>Objetivos</td>
+							<td th:text="${detalle.auditoria.programa.objetivo}"></td>
 						</tr>
+						<tr>
+							<td>Alcance</td>
+							<td th:text="${detalle.auditoria.programa.alcance}"></td>
+						</tr>
+						
 
 						<tr>
 							<td>Fecha de Inicio</td>
@@ -41,6 +45,37 @@
 							<td>Fecha de Fin</td>
 							<td th:text="${detalle.auditoria.fechaFinAuditoria}"></td>
 						</tr>
+						
+						<tr>
+							<td>Proceso</td>
+							<td th:text="${detalle.proceso.nombreProceso}"></td>
+						</tr>
+
+						<tr>
+							<td>Descripción de Proceso</td>
+							<td th:text="${detalle.proceso.descripcionProceso}"></td>
+						</tr>
+						
+						<tr>
+							<td>Area</td>
+							<td th:text="${detalle.auditoria.proceso.area.nombreArea}"></td>
+						</tr>
+						
+						<tr>
+							<td>Estado</td>
+							<td th:text="${detalle.auditoria.estado}"></td>
+						</tr>
+						
+						<tr>
+							<td>Prioridad</td>
+							<td th:text="${detalle.auditoria.prioridad}"></td>
+						</tr>
+						<tr>
+							<td>Resultado</td>
+							<td th:text="${detalle.auditoria.resultado}"></td>
+						</tr>
+						
+						
 						<tr>
 							<td>Resultado final</td>
 							<td th:text="${detalle.resultadoAuditoria}"></td>

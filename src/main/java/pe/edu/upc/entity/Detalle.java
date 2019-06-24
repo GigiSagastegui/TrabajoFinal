@@ -23,11 +23,11 @@ public class Detalle implements Serializable {
 	private int idDetalle;
 
 	@NotEmpty(message = "Ingresa el resultado de la auditoria")
-	@Column(name = "resultadoAuditoria", nullable = false, length = 45)
+	@Column(name = "resultadoAuditoria", nullable = false, length = 3000)
 	private String resultadoAuditoria;
 
 	@ManyToOne
-	@JoinColumn(name = "idProceso")
+	@JoinColumn(name = "descripcionProceso")
 	private Proceso proceso;
 
 	@ManyToOne

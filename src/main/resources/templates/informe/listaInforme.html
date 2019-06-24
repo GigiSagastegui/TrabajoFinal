@@ -41,25 +41,24 @@
 						<thead class="bg-dark mb-3 text-white">
 							<tr>
 								<th>Id</th>
-								<th>Descripcion</th>
 								<th>Auditor</th>
-								<th>Id Tarea</th>
-
-
-								<th align="center">Actualizar</th>
+								<th>Proceso</th>
+								<th>Tipo de Informe</th>
+								<th>Descripcion</th>
+								<th align="center">Operacion</th>
 
 							</tr>
 						</thead>
 						<tbody id="informe-list">
 							<tr th:each="informe:${listaInformes}">
-
-								<td th:text="${informe.idInforme}"></td>
-								<td th:text="${informe.descripcionInforme}"></td>
-
+								<td><a class="btn btn-info btn-xs"
+									th:href="@{/informes/ver/} + ${informe.idInforme}"
+									th:text="${informe.idInforme}"></a></td>
 								<td th:text="${informe.auditor.namePersona}"></td>
-								<td th:text="${informe.tarea.idTarea}"></td>
-
-
+								<td th:text="${informe.proceso.nombreProceso}"></td>
+								<td th:text="${informe.tipoInforme}"></td>
+								<td th:text="${informe.descripcionInforme}"></td>
+								
 								<td align="center"><a
 									th:href="@{'/informes/modificar/' + ${informe.idInforme}}"><span
 										class="glyphicon glyphicon-edit"></span></a></td>

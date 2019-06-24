@@ -7,9 +7,10 @@
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container">
 		<div class="card">
-			<div class="card-header text-white bg-dark mb-3">Reporte de
-				Informe</div>
+			<div class="card-header text-white bg-dark mb-3">Reporte de Programa de Auditoria</div>
 			<div class="card-body">
+			
+			
 
 				<div class="table-responsive">
 					<table class="table table-white">
@@ -18,34 +19,28 @@
 						<tbody>
 							<tr>
 								<td>Id</td>
-								<td th:text="${informe.idInforme}"></td>
+								<td th:text="${programa.idPrograma}"></td>
 							</tr>
 							<tr>
-								<td>Auditor</td>
-								<td th:text="${informe.auditor.namePersona}"></td>
+								<td>Programa</td>
+								<td th:text="${programa.nombrePrograma}"></td>
 							</tr>
 							<tr>
-								<td>Proceso</td>
-								<td th:text="${informe.proceso.nombreProceso}"></td>
+								<td>Objetivo</td>
+								<td th:text="${programa.objetivo}"></td>
+							</tr>
+							<tr>
+								<td>Alcance</td>
+								<td th:text="${programa.alcance}"></td>
 							</tr>
 							
 							
-							
-							<tr>
-								<td>Tipo Informe</td>
-								<td th:text="${informe.tipoInforme}"></td>
-							</tr>
-							
-							<tr>
-								<td>Descripción de Informe</td>
-								<td th:text="${informe.descripcionInforme}"></td>
-							</tr>
 							
 						</tbody>
 
 					</table>
 
-					<a th:href="@{/informes/listar}" type="button"
+					<a th:href="@{/programas/listar}" type="button"
 						class="btn btn-primary k"> <span
 						class="glyphicon glyphicon-circle-arrow-left"></span> Volver
 					</a>

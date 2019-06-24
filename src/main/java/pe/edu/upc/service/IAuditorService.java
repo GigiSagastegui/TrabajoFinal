@@ -7,7 +7,7 @@ import pe.edu.upc.entity.Auditor;
 
 public interface IAuditorService {
 	
-	public void insertar(Auditor auditor);
+	public boolean insertar(Auditor auditor);
 
 	public void modificar(Auditor auditor);
 
@@ -20,5 +20,7 @@ public interface IAuditorService {
 	List<Auditor> buscarDni(String dniPersona);
 
 	List<Auditor> buscarName(String namePersona);
+	
+	List<Auditor> buscarNombreCaso(String namePersona);
 
 }

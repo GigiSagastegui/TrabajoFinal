@@ -9,7 +9,7 @@
 	<div class="container">
 		<div class="card bg-light">
 			<div class="card-header text-black bg-blue">Registro de
-				Detalles</div>
+				Detalle Auditoria</div>
 			<form th:action="@{/detalles/guardar}" th:object="${detalle}"
 				method="post" enctype="multipart/form-data">
 				<div class="form-group row">
@@ -18,44 +18,45 @@
 						<input type="text" th:field="*{idDetalle}" class="form-control"
 							th:errorclass="'form-control alert-danger'" /> <small
 							class="form-text text-danger"
-							th:if="${#fields.hasErrors('idDetalle')}" th:errors="*{idDetalle}"></small>
+							th:if="${#fields.hasErrors('idDetalle')}"
+							th:errors="*{idDetalle}"></small>
 					</div>
 				</div>
 
 
 
 				<div class="form-group row">
-					<label for="proceso" class=" col-sm-2 col-form-label">Proceso:</label>
+					<label for="proceso" class=" col-sm-2 col-form-label">Proceso</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{proceso.idProceso}">
 							<option th:each="pro: ${listaProcesos}"
-								th:value="${pro.idProceso}" th:text="${pro.idProceso}"
+								th:value="${pro.idProceso}" th:text="${pro.nombreProceso}"
 								th:selected="(${pro.idProceso} == *{proceso.idProceso})"></option>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="auditoria" class=" col-sm-2 col-form-label">Auditoria:</label>
+					<label for="auditoria" class=" col-sm-2 col-form-label">Auditoria</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{auditoria.idAuditoria}">
 							<option th:each="aud: ${listaAuditorias}"
-								th:value="${aud.idAuditoria}" th:text="${aud.idAuditoria}"
+								th:value="${aud.idAuditoria}" th:text="${aud.descripcionAuditoria}"
 								th:selected="(${aud.idAuditoria} == *{auditoria.idAuditoria})"></option>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="resultadoAuditoria" class="col-sm-2 col-form-label">Resultado Auditoria</label>
+					<label for="resultadoAuditoria" class=" col-sm-2 col-form-label">Resultado</label>
 					<div class="col-sm-6">
 						<input type="text" th:field="*{resultadoAuditoria}" class="form-control"
-							th:errorclass="'form-control alert-danger'" /> <small
-							class="form-text text-danger"
+							th:errorclass="'form-control alert-info'" /> <small
 							th:if="${#fields.hasErrors('resultadoAuditoria')}"
 							th:errors="*{resultadoAuditoria}"></small>
 					</div>
 				</div>
+
 
 
 				<div class="form-group row">
@@ -76,4 +77,3 @@
 
 </body>
 </html>
-

@@ -12,4 +12,9 @@ import pe.edu.upc.entity.Proceso;
 public interface ProcesoRepository  extends JpaRepository<Proceso, Integer>{
 	@Query("select p from Proceso p where p.area.nombreArea like %?1%")
 	public List<Proceso> buscarArea(String nombreArea);
+	
+	@Query("from Proceso p where p.nombreProceso like %:nombreProceso%")
+	List<Proceso> findByNombreProceso(String nombreProceso);
+	
+	public List<Proceso> findByNombreProcesoLikeIgnoreCase(String term);
 }

@@ -9,9 +9,10 @@
 	<div class="container">
 		<div class="card bg-light">
 			<div class="card-header text-black bg-blue">Registro de
-				Administradores</div>
+				Administrador</div>
 			<form th:action="@{/administradores/guardar}"
-				th:object="${administrador}" method="post" enctype = "multipart/form-data">
+				th:object="${administrador}" method="post"
+				enctype="multipart/form-data">
 				<div class="form-group row">
 					<label for="idPersona" class="col-sm-2 col-form-label">Id</label>
 					<div class="col-sm-6">
@@ -81,9 +82,53 @@
 				</div>
 
 				<div class="form-group row">
-					<label for="file" class="col-sm-2 col-form-label ">Foto:</label>
+					<label for="file" class="col-sm-2 col-form-label ">Foto</label>
 					<div class="col-sm-6">
 						<input type="file" name="file" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{userUsuario}" id="usuario" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							th:if="${#fields.hasErrors('userUsuario')}"
+							th:errors="*{userUsuario}"></small>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="contraseña" class="col-sm-2 col-form-label">Contraseña</label>
+					<div class="col-sm-6">
+						<input type="password" th:field="*{passwordUsuario}" id="contraseña" placeholder="password" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							th:if="${#fields.hasErrors('passwordUsuario')}"
+							th:errors="*{passwordUsuario}"></small>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="tipoUsuario" class=" col-sm-2 col-form-label">Tipo de usuario</label>
+					<div class="col-sm-6">
+						<select class="form-control" name="tipoUsuario">
+							
+							<option>ROLE_ADMINISTRADOR</option>
+
+
+						</select>
+					</div>
+
+
+				</div>
+				<div class="form-group row">
+					<label for="estadoUsuario" class=" col-sm-2 col-form-label">Estado</label>
+					<div class="col-sm-6">
+						<select class="form-control" name="estadoUsuario">
+							
+							<option>1</option>
+							<option>0</option>
+
+
+						</select>
 					</div>
 				</div>
 

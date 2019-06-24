@@ -40,13 +40,17 @@
 							<tr>
 								<th>Id</th>
 								<th>Proceso</th>
+								<th>Descripción</th>
 								<th>Area</th>
 								<th align="center">Operación</th>
 							</tr>
 						</thead>
 						<tbody id="proceso-list">
 							<tr th:each="proceso:${listaProcesos}">
-								<td th:text="${proceso.idProceso}"></td>
+								<td><a class="btn btn-info btn-xs"
+									th:href="@{/procesos/ver/} + ${proceso.idProceso}"
+									th:text="${proceso.idProceso}"></a></td>
+								<td th:text="${proceso.nombreProceso}"></td>
 								<td th:text="${proceso.descripcionProceso}"></td>
 								<td th:text="${proceso.area.nombreArea}"></td>
 

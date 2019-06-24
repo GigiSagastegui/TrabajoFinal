@@ -15,6 +15,6 @@ public interface AuditorRepository extends JpaRepository<Auditor, Integer>{
 	@Query("from Auditor a where a.namePersona like %:namePersona%")
 	List<Auditor> findByNamePersona(String namePersona);
 	
-	
+	public List<Auditor> findByNamePersonaLikeIgnoreCase(String term);
 	
 }

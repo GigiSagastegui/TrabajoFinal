@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.entity.Detalle;
 import pe.edu.upc.service.IAuditoriaService;
@@ -45,7 +46,7 @@ public class DetalleController {
 	}
 
 	@PostMapping("/guardar")
-	public String guardarDetalle(@Valid Detalle detalle, BindingResult result, Model model, SessionStatus status)
+	public String guardarDetalle(@Valid Detalle detalle, RedirectAttributes flash, BindingResult result, Model model, SessionStatus status)
 			throws Exception {
 		if (result.hasErrors()) {
 			model.addAttribute("listaProcesos", pService.listar());
@@ -53,7 +54,7 @@ public class DetalleController {
 			return "/detalle/detalle";
 		} else {
 			dService.insertar(detalle);
-			model.addAttribute("mensaje", "Se guardó correctamente");
+			flash.addFlashAttribute("mensaje", "Se guardó correctamente");
 			status.setComplete();
 			return "redirect:/detalles/listar";
 		}
@@ -104,11 +105,25 @@ public class DetalleController {
 		
 
 		if (listaDetalles.isEmpty()) {
-			model.put("mensaje", "No se encontrÃ³");
+			model.put("mensaje", "No se encontró");
 		}
 		model.put("listaDetalles", listaDetalles);
 		return "detalle/listaDetalle";
 
+	}
+	
+	@GetMapping(value = "/ver/{id}")
+	public String ver(@PathVariable(value = "id") Integer id, Map<String, Object> model, RedirectAttributes flash) {
+
+		Optional<Detalle> detalle = dService.listarId(id);
+		if (detalle == null) {
+			flash.addFlashAttribute("error", "El Detalle no existe en la base de datos.");
+			return "redirect:/detalles/listar";
+		}
+
+		model.put("detalle", detalle.get());
+
+		return "detalle/ver";
 	}
 
 }

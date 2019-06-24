@@ -46,4 +46,28 @@ public class AuditoriaServiceImpl implements IAuditoriaService{
 		return aR.findByEstado(estado);
 	}
 
+	@Override
+	public List<Auditoria> buscarResultado(String resultado) {
+		// TODO Auto-generated method stub
+		return aR.findByResultado(resultado);
+	}
+
+	@Override
+	public List<Auditoria> buscarPrioridad(String prioridad) {
+		// TODO Auto-generated method stub
+		return aR.findByPrioridad(prioridad);
+	}
+
+	@Override
+	public List<Auditoria> buscarDescripcion(String descripcionAuditoria) {
+		// TODO Auto-generated method stub
+		return aR.findByDescripcionAuditoria(descripcionAuditoria);
+	}
+
+	@Override
+	public List<Auditoria> buscarNombreCaso(String descripcionAuditoria) {
+		// TODO Auto-generated method stub
+		return aR.findByDescripcionAuditoriaLikeIgnoreCase(descripcionAuditoria);
+	}
+
 }
