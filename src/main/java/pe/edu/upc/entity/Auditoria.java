@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,14 +39,14 @@ public class Auditoria implements Serializable {
 	private Proceso proceso;
 
 	@NotNull(message = "La fecha es obligatoria")
-	@Future(message = "La fecha debe estar en el futuro")
+	@Past(message = "La fecha debe estar en el pasado.")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaInicioAuditoria")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaInicioAuditoria;
 
 	@NotNull(message = "La fecha es obligatoria")
-	@Future(message = "La fecha debe estar en el futuro")
+	@Future(message = "La fecha debe estar en el futuro.")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaFinAuditoria")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

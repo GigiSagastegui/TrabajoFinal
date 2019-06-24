@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.entity.Detalle;
 import pe.edu.upc.service.IAuditoriaService;
@@ -109,6 +110,20 @@ public class DetalleController {
 		model.put("listaDetalles", listaDetalles);
 		return "detalle/listaDetalle";
 
+	}
+	
+	@GetMapping(value = "/ver/{id}")
+	public String ver(@PathVariable(value = "id") Integer id, Map<String, Object> model, RedirectAttributes flash) {
+
+		Optional<Detalle> detalle = dService.listarId(id);
+		if (detalle == null) {
+			flash.addFlashAttribute("error", "El Detalle no existe en la base de datos.");
+			return "redirect:/detalles/listar";
+		}
+
+		model.put("detalle", detalle.get());
+
+		return "detalle/ver";
 	}
 
 }

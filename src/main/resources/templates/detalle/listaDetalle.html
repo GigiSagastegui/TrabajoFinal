@@ -17,7 +17,8 @@
 				<div class="form-group">
 
 					<label for="detalle">Buscar:</label> <input type="text"
-						class="form-control" th:field="*{resultadoAuditoria}" id="resultadoAuditoria"></input>
+						class="form-control" th:field="*{resultadoAuditoria}"
+						id="resultadoAuditoria"></input>
 					<div align="right">
 						<button type="submit" class="btn btn-success">
 							<span class="glyphicon glyphicon-ok"></span>
@@ -41,28 +42,21 @@
 						<thead class="bg-dark mb-3 text-white">
 							<tr>
 								<th>Id</th>
-								<th>Resultado Auditoria</th>
-								<th>ID Proceso</th>
-								<th>ID Auditoria</th>
-
-
-								<th align="center">Actualizar</th>
+								<th>Proceso</th>
+								<th>Auditoria</th>
+								<th>Resultado de Auditoria</th>
 
 							</tr>
 						</thead>
 						<tbody id="detalle-list">
 							<tr th:each="detalle:${listaDetalles}">
 
-								<td th:text="${detalle.idDetalle}"></td>
+								<td><a class="btn btn-primary btn-xs"
+									th:href="@{/detalles/ver/} + ${detalle.idDetalle}" 
+									th:text="${detalle.idDetalle}"></a></td>
+								<td th:text="${detalle.proceso.nombreProceso}"></td>
+								<td th:text="${detalle.auditoria.descripcionAuditoria}"></td>
 								<td th:text="${detalle.resultadoAuditoria}"></td>
-
-								<td th:text="${detalle.proceso.idProceso}"></td>
-								<td th:text="${detalle.auditoria.idAuditoria}"></td>
-
-
-								<td align="center"><a
-									th:href="@{'/detalles/modificar/' + ${detalle.idDetalle}}"><span
-										class="glyphicon glyphicon-edit"></span></a></td>
 							</tr>
 						</tbody>
 					</table>
