@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8"></meta>
+<title>Game Zone - lo mejor en juegos de estrategia</title>
+
+<link rel="icon" type="image/ico" href="/imagenes1/logo.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<link th:href="@{/css/bootstrap-responsive.css}" rel="stylesheet"></link>
+<link th:href="@{/css/style.css}" rel="stylesheet"></link>
+<link th:href="@{/color/default.css}" rel="stylesheet"></link>
+<!-- =======================================================
+    Theme Name: Maxim
+    Theme URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+	======================================================= -->
+</head>
+
+<body>
+
+	<!-- navbar -->
+	<div class="navbar-wrapper">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<!-- Responsive navbar -->
+					<a class="btn btn-navbar" data-toggle="collapse"
+						data-target=".nav-collapse"><span class="icon-bar"></span><span
+						class="icon-bar"></span><span class="icon-bar"></span> </a>
+					<h1 class="brand">
+						<a href="index">Game Zone</a>
+					</h1>
+					<!-- navigation -->
+					<nav class="pull-right nav-collapse collapse">
+						<ul id="menu-main" class="nav">
+							<li><a title="datos" href="#datos">Datos</a></li>
+							<li><a title="team" href="#about">Nosotras</a></li>
+							<li><a title="services" href="#ofrece">Ofrece</a></li>
+							<li class="nav-item"><a class="nav-link js-scroll-trigger"
+								th:href="@{/login}">Ingresar</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Header area -->
+	<div id="header-wrapper" class="header-slider">
+		<header class="clearfix">
+			<div class="logo">
+				<img src="images/logo-image.png" alt="" />
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+						<div id="main-flexslider" class="flexslider">
+							<ul class="slides">
+								<li>
+									<p class="home-slide-content">
+										<strong>Game Zone</strong> calidad
+									</p>
+								</li>
+								<li>
+									<p class="home-slide-content">
+										Game Zone <strong>pasion</strong>
+									</p>
+								</li>
+								<li>
+									<p class="home-slide-content">
+										Game Zone <strong>unico</strong>
+									</p>
+								</li>
+							</ul>
+						</div>
+						<!-- end slider -->
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+
+	<!-- spacer section -->
+	<section id="datos" class="section orange">
+
+		<div class="container">
+			<h4>Datos de Game Zone</h4>
+			<!-- Four columns -->
+			<div class="row">
+				<div class="span3 animated-fast flyIn">
+					<div class="service-box">
+						<img th:src="@{/imagenes1/icons/creativity.png}" alt="" />
+						<h2>---------------</h2>
+						<p>Game Zone es una empresa dedicada a la promoción
+							distribución y manejo de los más reconocidos juegos de estrategia
+							y fantasía, tanto en las Cartas, Miniaturas, así como Juegos de
+							Rol y Juegos de Mesa. No se enfoca en Juegos que contiene armas
+							ni materiales que promuevan la violencia.</p>
+					</div>
+				</div>
+				<div class="span3 animated flyIn">
+					<div class="service-box">
+						<img th:src="@{/imagenes1/icons/ventas2.png}" alt="" />
+						<h2>Misión</h2>
+						<p>Brindar una nueva forma de entretenimiento, que no sólo
+							cumpla la función de divertir, sino que al mismo tiempo logre
+							incentivar la creatividad y el pensamiento estratégico en los
+							niños, jóvenes y adultos.</p>
+					</div>
+				</div>
+				<div class="span3 animated-fast flyIn">
+					<div class="service-box">
+						<img th:src="@{/imagenes1/icons/ventas3.png}" alt="" />
+						<h2>---------------</h2>
+						<p>Compartir actividades comunes para lograr un desarrollo
+							emocional y social para que exista un equilibrio entre lo
+							personal y la convivencia.</p>
+					</div>
+				</div>
+				<div class="span3 animated-slow flyIn">
+					<div class="service-box">
+						<img th:src="@{/imagenes1/icons/profesor.png}" alt="" />
+						<h2>Visión</h2>
+						<p>Buscar ampliar los sectores de ventas en donde busquen
+							mayor cantidad de personas que disfruten y a la vez logran
+							desarrollar diferentes capacidades mediante el juego, buscando la
+							mayor integración entre los diferentes sectores económicos.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- end spacer section -->
+	<!-- section: team -->
+	<section id="about" class="section">
+		<div class="container">
+			<h4>Nosotras</h4>
+
+
+			<div class="row">
+				<div class="container">
+					<div class="span2 flyIn">
+						<div class="people">
+							<img class="team-thumb img-circle"
+								th:src="@{/imagenes1/team/myrella.png}" alt="" />
+							<h3>Myrella Aliaga</h3>
+							<p>Desarrolladora web</p>
+						</div>
+					</div>
+					<div class="span2 flyIn">
+						<div class="people">
+							<img class="team-thumb img-circle"
+								th:src="@{/imagenes1/team/grecia.png}" alt="" />
+							<h3>Grecia Carlos Corzo</h3>
+							<p>Desarrolladora web</p>
+						</div>
+					</div>
+					<div class="span2 offset1 flyIn">
+						<div class="people">
+							<img class="team-thumb img-circle"
+								th:src="@{/imagenes1/team/reyna.jpg}" alt="" />
+							<h3>Reyna Bramón</h3>
+							<p>Desarrolladora web</p>
+						</div>
+					</div>
+					<div class="span2 flyIn">
+						<div class="people">
+							<img class="team-thumb img-circle"
+								th:src="@{/imagenes1/team/angela.jpeg}" alt="" />
+							<h3>Angela Sagastegui</h3>
+							<p>Desarrolladora web</p>
+						</div>
+					</div>
+					<div class="span2 flyIn">
+						<div class="people">
+							<img class="team-thumb img-circle"
+								th:src="@{/imagenes1/team/lili.jpg}" alt="" />
+							<h3>Lilibeth Solis</h3>
+							<p>Desarrolladora web</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+	</section>
+
+	<!-- end section: team -->
+	<!-- section: services -->
+	<section id="ofrece" class="section orange">
+		<div class="container">
+			<h4>Game Zone Ofrece</h4>
+			<!-- Four columns -->
+			<div class="row">
+				<div class="span3 animated-fast flyIn">
+					<div class="ofrece-box">
+						<img class="team-thumb img-circle"
+							th:src="@{/imagenes1/productos/fantasia.jpg}" alt="" />
+						<h2>Juegos de Estrategia y fantasia</h2>
+					</div>
+				</div>
+				<div class="span3 animated flyIn">
+					<div class="ofrece-box">
+						<img class="team-thumb img-circle"
+							th:src="@{/imagenes1/productos/mesa.jpg}" alt="" />
+						<h2>Juegos de Mesa</h2>
+
+					</div>
+				</div>
+				<div class="span3 animated-fast flyIn">
+					<div class="ofrece-box">
+						<img class="team-thumb img-circle"
+							th:src="@{/imagenes1/productos/rol.jpg}" alt="" />
+						<h2>Juegos de Rol</h2>
+
+					</div>
+				</div>
+				<div class="span3 animated-slow flyIn">
+					<div class="ofrece-box">
+						<img class="team-thumb img-circle"
+							th:src="@{/imagenes1/productos/ymuchomas.jpg}" alt="" />
+						<h2>y Mucho Más</h2>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="ingresar" class="bg-dark text-white">
+		<div class="container text-center">
+			<h2 class="mb-4">Ingresa a la web de Game Zone</h2>
+			<a class="btn btn-light btn-xl sr-button"
+				href="https://www.gamezone.com.pe/">Ir ahora!</a>
+		</div>
+	</section>
+
+	<footer>
+		<p class="copyright">&copy; bootstrap. All rights reserved.</p>
+		<div class="credits">
+
+			Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+		</div>
+		<!-- ./container -->
+	</footer>
+
+	<!--lol-->
+
+	<a href="#" class="scrollup"><i
+		class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
+	<script src="js2/jquery.js"></script>
+	<script src="js2/jquery.scrollTo.js"></script>
+	<script src="js2/jquery.nav.js"></script>
+	<script src="js2/jquery.localScroll.js"></script>
+	<script src="js2/bootstrap.js"></script>
+	<script src="js2/jquery.prettyPhoto.js"></script>
+	<script src="js2/isotope.js"></script>
+	<script src="js2/jquery.flexslider.js"></script>
+	<script src="js2/inview.js"></script>
+	<script src="js2/animate.js"></script>
+	<script src="js2/custom.js"></script>
+	<script src="contactform/contactform.js"></script>
+
+</body>
+
+</html>

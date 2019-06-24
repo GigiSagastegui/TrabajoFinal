@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-white bg-dark mb-3">Reporte de
+				Auditorias</div>
+			<div class="card-body">
+
+				<div class="table-responsive">
+					<table class="table table-white">
+
+						<tbody>
+							<tr>
+								<td>CODIGO</td>
+								<td th:text="${auditoria.idAuditoria}"></td>
+							</tr>
+							<tr>
+								<td>Auditoria</td>
+								<td th:text="${auditoria.descripcionAuditoria}"></td>
+							</tr>
+							<tr>
+								<td>Estado</td>
+								<td th:text="${auditoria.estado}"></td>
+							</tr>
+							<tr>
+								<td>Prioridad</td>
+								<td th:text="${auditoria.prioridad}"></td>
+							</tr>
+							<tr>
+								<td>Resultado</td>
+								<td th:text="${auditoria.resultado}"></td>
+							</tr>
+							<tr>
+								<td>Fecha de Inicio</td>
+								<td th:text="${auditoria.fechaInicioAuditoria}"></td>
+							</tr>
+							<tr>
+								<td>Fecha de Fin</td>
+								<td th:text="${auditoria.fechaFinAuditoria}"></td>
+							</tr>
+							<tr>
+								<td>Proceso</td>
+								<td th:text="${auditoria.proceso.descripcionProceso}"></td>
+							</tr>
+						</tbody>
+
+					</table>
+
+					<a th:href="@{/auditorias/listar}" type="button"
+						class="btn btn-primary k"> <span
+						class="glyphicon glyphicon-circle-arrow-left"></span> Volver
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

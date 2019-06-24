@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header text-black bg-blue">Registro de Proceso</div>
+			<form th:action="@{/procesos/guardar}" th:object="${proceso}"
+				method="post" enctype="multipart/form-data">
+				<div class="form-group row">
+					<label for="idProceso" class="col-sm-2 col-form-label">Id</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{idProceso}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('idProceso')}"
+							th:errors="*{idProceso}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="proceso" class="col-sm-2 col-form-label">Proceso</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{descripcionProceso}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('descripcionProceso')}"
+							th:errors="*{descripcionProceso}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="area" class=" col-sm-2 col-form-label">Area:</label>
+					<div class="col-sm-6">
+						<select class="form-control" th:field="*{area.idArea}">
+							<option th:each="a: ${listaAreas}" th:value="${a.idArea}"
+								th:text="${a.nombreArea}"
+								th:selected="(${a.idArea} == *{area.idArea})"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-6" align="center">
+						<input type="submit" value="Registrar" class="btn btn-primary" />
+
+						<a href="/procesos/listar" class="btn btn-danger">Cancelar</a>
+					</div>
+				</div>
+				<p th:text="${mensaje}" class="form-text text-danger"></p>
+			</form>
+		</div>
+	</div>
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+
+</body>
+</html>

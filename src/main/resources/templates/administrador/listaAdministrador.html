@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+		<div align="right">
+			<a th:href="@{/administradores/nuevo}" id="add-row" type="button"
+				class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+		</div>
+		<div>
+			<form th:action="@{/administradores/buscar}" method="post"
+				th:object="${administrador}">
+				<div class="form-group">
+
+					<label for="administrador">Buscar:</label> <input type="text"
+						class="form-control" th:field="*{namePersona}" id="administrador"></input>
+					<div align="right">
+						<button type="submit" class="btn btn-success">
+							<span class="glyphicon glyphicon-ok"></span>
+						</button>
+						<a href="/administradores/listar" class="btn btn-danger"><span
+							class="glyphicon glyphicon-remove"></span></a>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+
+		<div class="card">
+			<div class="card-header text-white bg-dark mb-3">Reporte de
+				Administradores</div>
+			<div class="card-body">
+
+				<div class="table-responsive">
+					<table class="table table-white">
+						<thead class="bg-dark mb-3 text-white">
+							<tr>
+								<th>Id</th>
+								<th>Administrador</th>
+								<th>Fecha de Nacimiento</th>
+								<th>Email</th>
+								<th>DNI</th>
+								<th>Direccion</th>
+								<th>Telefono</th>
+								<th align="center">Operación</th>
+							</tr>
+						</thead>
+						<tbody id="administrador-list">
+							<tr th:each="administrador:${listaAdministradores}">
+								<td><a class="btn btn-info btn-xs"
+									th:href="@{/administradores/ver/} + ${administrador.idPersona}"
+									th:text="${administrador.idPersona}"></a></td>
+								<td th:text="${administrador.namePersona}"></td>
+								<td
+									th:text="${#dates.format(administrador.birthDatePersona,'dd/MM/yyyy')}"></td>
+								<td th:text="${administrador.emailPersona}"></td>
+								<td th:text="${administrador.dniPersona}"></td>
+								<td th:text="${administrador.DireccionPersona}"></td>
+								<td th:text="${administrador.TelPersona}"></td>
+								<td align="center"><a
+									th:href="@{'/administradores/detalle/' + ${administrador.idPersona}}"><span
+										class="glyphicon glyphicon-edit"></span></a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div th:if="${mensaje}" class="alert alert-info">
+						<p th:text="${mensaje}"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

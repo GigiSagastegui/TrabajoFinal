@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header text-black bg-blue">Registro de
+				Auditoria</div>
+			<form th:action="@{/auditorias/guardar}" th:object="${auditoria}"
+				method="post" enctype="multipart/form-data">
+				<div class="form-group row">
+					<label for="idAuditoria" class="col-sm-2 col-form-label">Id</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{idAuditoria}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('idAuditoria')}"
+							th:errors="*{idAuditoria}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="descripcionAuditoria" class="col-sm-2 col-form-label">Descripcion</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{descripcionAuditoria}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('descripcionAuditoria')}"
+							th:errors="*{descripcionAuditoria}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="estado" class=" col-sm-2 col-form-label">Estado:</label>
+					<div class="col-sm-6">
+						<select class="form-control" name="estado">
+							<option disabled selected>Seleccionar...</option>
+							<option>Pendiente</option>
+							<option>En proceso</option>
+							<option>Finalizao</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="estado" class="col-sm-2 col-form-label">Resultado</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{resultado}" class="form-control"
+							th:errorclass="'form-control alert-danger'" required="required" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('resultado')}"
+							th:errors="*{resultado}"></small>
+					</div>
+				</div>
+
+
+
+				<div class="form-group row">
+					<label for="prioridad" class=" col-sm-2 col-form-label">Prioridad:</label>
+					<div class="col-sm-6">
+						<select class="form-control" name="prioridad">
+							<option disabled selected>Seleccionar...</option>
+							<option>Alta</option>
+
+							<option>Media</option>
+
+							<option>Baja</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="fechaInicioAuditoria" class="col-sm-2 col-form-label">Fecha
+						de Inicio</label>
+					<div class="col-sm-6">
+						<input type="date" th:field="*{fechaInicioAuditoria}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('fechaInicioAuditoria')}"
+							th:errors="*{fechaInicioAuditoria}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="fechaFinAuditoria" class="col-sm-2 col-form-label">Fecha
+						de Fin</label>
+					<div class="col-sm-6">
+						<input type="date" th:field="*{fechaFinAuditoria}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small class="form-text text-danger"
+							th:if="${#fields.hasErrors('fechaFinAuditoria')}"
+							th:errors="*{fechaFinAuditoria}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="proceso" class=" col-sm-2 col-form-label">Proceso:</label>
+					<div class="col-sm-6">
+						<select class="form-control" th:field="*{proceso.idProceso}">
+							<option th:each="c: ${listaProcesos}" th:value="${c.idProceso}"
+								th:text="${c.descripcionProceso}"
+								th:selected="(${c.idProceso} == *{proceso.idProceso})"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-6" align="center">
+						<input type="submit" value="Registrar" class="btn btn-primary" />
+
+						<a href="/auditorias/listar" class="btn btn-danger">Cancelar</a>
+					</div>
+				</div>
+				<p th:text="${mensaje}"></p>
+			</form>
+		</div>
+	</div>
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+
+</body>
+</html>
+

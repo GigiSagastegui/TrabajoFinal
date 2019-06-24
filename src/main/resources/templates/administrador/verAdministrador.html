@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-white bg-dark mb-3">Reporte de
+				Administradores</div>
+			<div class="card-body">
+			
+			<img th:if="${#strings.length(administrador.foto) > 0}"
+							class="img-thumbnail rounded float-left" style="max-width: 17%;"
+							th:src="@{'/administradores/uploads/' + ${administrador.foto}}"
+							th:alt="${administrador.foto}" />
+
+				<div class="table-responsive">
+					<table class="table table-white">
+					
+
+						<tbody>
+							<tr>
+								<td>CODIGO</td>
+								<td th:text="${administrador.idPersona}"></td>
+							</tr>
+							<tr>
+								<td>Administrador</td>
+								<td th:text="${administrador.namePersona}"></td>
+							</tr>
+							<tr>
+								<td>Telefono</td>
+								<td th:text="${administrador.TelPersona}"></td>
+							</tr>
+							<tr>
+								<td>Fecha de Nacimiento</td>
+								<td th:text="${administrador.birthDatePersona}"></td>
+							</tr>
+							<tr>
+								<td>Direccion</td>
+								<td th:text="${administrador.DireccionPersona}"></td>
+							</tr>
+							
+							<tr>
+								<td>DNI</td>
+								<td th:text="${administrador.dniPersona}"></td>
+							</tr>
+							
+							<tr>
+								<td>Email</td>
+								<td th:text="${administrador.emailPersona}"></td>
+							</tr>
+							
+							
+						</tbody>
+
+					</table>
+
+					<a th:href="@{/administradores/listar}" type="button"
+						class="btn btn-primary k"> <span
+						class="glyphicon glyphicon-circle-arrow-left"></span> Volver
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

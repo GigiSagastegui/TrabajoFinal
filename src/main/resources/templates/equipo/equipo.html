@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header text-black bg-blue">Registro de
+				Integrantes</div>
+			<form th:action="@{/equipos/guardar}" th:object="${equipo}"
+				method="post" enctype="multipart/form-data">
+				<div class="form-group row">
+					<label for="idEquipo" class="col-sm-2 col-form-label">Id</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{idEquipo}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('idEquipo')}" th:errors="*{idEquipo}"></small>
+					</div>
+				</div>
+
+
+
+				<div class="form-group row">
+					<label for="auditor" class=" col-sm-2 col-form-label">Auditor:</label>
+					<div class="col-sm-6">
+						<select class="form-control" th:field="*{auditor.idPersona}">
+							<option th:each="audi: ${listaAuditores}"
+								th:value="${audi.idPersona}" th:text="${audi.namePersona}"
+								th:selected="(${audi.idPersona} == *{auditor.idPersona})"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="auditoria" class=" col-sm-2 col-form-label">Auditoria:</label>
+					<div class="col-sm-6">
+						<select class="form-control" th:field="*{auditoria.idAuditoria}">
+							<option th:each="aud: ${listaAuditorias}"
+								th:value="${aud.idAuditoria}" th:text="${aud.idAuditoria}"
+								th:selected="(${aud.idAuditoria} == *{auditoria.idAuditoria})"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="cargo" class="col-sm-2 col-form-label">Cargo</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{cargo}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
+							th:if="${#fields.hasErrors('cargo')}"
+							th:errors="*{cargo}"></small>
+					</div>
+				</div>
+
+
+				<div class="form-group row">
+					<div class="col-sm-6" align="center">
+						<input type="submit" value="Registrar" class="btn btn-primary" />
+
+						<a href="/equipos/listar" class="btn btn-danger">Cancelar</a>
+					</div>
+				</div>
+				<p th:text="${mensaje}"></p>
+			</form>
+		</div>
+	</div>
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+
+
+</body>
+</html>
+

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<meta charset="UTF-8"></meta>
+
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header text-black bg-blue">Registro de
+				Administradores</div>
+			<form th:action="@{/administradores/guardar}"
+				th:object="${administrador}" method="post"
+				enctype="multipart/form-data">
+				<div class="form-group row">
+					<label for="idPersona" class="col-sm-2 col-form-label">Id</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{idPersona}" class="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="namePersona" class="col-sm-2 col-form-label">Administrador</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{namePersona}" class="form-control"
+							th:errorclass="'form-control alert-info'" /> <small
+							th:if="${#fields.hasErrors('namePersona')}"
+							th:errors="*{namePersona}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="birthDatePersona" class="col-sm-2 col-form-label">Fecha
+						de Nacimiento</label>
+					<div class="col-sm-6">
+						<input type="date" th:field="*{birthDatePersona}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small th:if="${#fields.hasErrors('birthDatePersona')}"
+							th:errors="*{birthDatePersona}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="emailPersona" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{emailPersona}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							th:if="${#fields.hasErrors('emailPersona')}"
+							th:errors="*{emailPersona}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="dniPersona" class="col-sm-2 col-form-label">DNI</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{dniPersona}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							th:if="${#fields.hasErrors('dniPersona')}"
+							th:errors="*{dniPersona}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="DireccionPersona" class="col-sm-2 col-form-label">Dirección</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{DireccionPersona}"
+							class="form-control" th:errorclass="'form-control alert-danger'" />
+						<small th:if="${#fields.hasErrors('DireccionPersona')}"
+							th:errors="*{DireccionPersona}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="TelPersona" class="col-sm-2 col-form-label">Telefono</label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{TelPersona}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							th:if="${#fields.hasErrors('TelPersona')}"
+							th:errors="*{TelPersona}"></small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="file" class="col-sm-2 col-form-label ">Foto:</label>
+					<div class="col-sm-6">
+						<input type="file" name="file" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="usuario">USUARIO:</label> <input type="text"
+						class="form-control" th:field="*{userUsuario}" id="usuario"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('userUsuario')}"
+						th:errors="*{userUsuario}"></div>
+
+				</div>
+				<div class="form-group">
+					<label for="contraseña">CONTRASEÑA:</label> <input type="text"
+						class="form-control" th:field="*{passwordUsuario}" id="contraseña"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('passwordUsuario')}"
+						th:errors="*{passwordUsuario}"></div>
+
+				</div>
+				<div class="form-group">
+					<label for="flag">TIPO USUARIO:</label> <input type="text"
+						th:field="*{tipoUsuario}" class="form-control" id="flag"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('tipoUsuario')}"
+						th:errors="*{tipoUsuario}"></div>
+				</div>
+				<div class="form-group">
+					<label for="estado">ESTADO:</label> <input type="text"
+						th:field="*{estadoUsuario}" class="form-control" id="estado"></input>
+					<div class="alert alert-danger"
+						th:if="${#fields.hasErrors('estadoUsuario')}"
+						th:errors="*{estadoUsuario}"></div>
+
+				</div>
+
+
+
+				<div class="form-group row">
+					<div class="col-sm-6" align="center">
+						<input type="submit" value="Registrar" class="btn btn-primary" />
+
+						<a href="/administradores/listar" class="btn btn-danger">Cancelar</a>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	<div th:if="${mensaje}" class="alert alert-info">
+		<p th:text="${mensaje}"></p>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
