@@ -37,9 +37,6 @@ public class GerenteAreaController {
 	private IGerenteAreaService gService;
 
 	@Autowired
-	private PersonaController personaEncryp;
-
-	@Autowired
 	private IUploadFileService uploadFileService;
 
 	@GetMapping(value = "/uploads/{filename:.+}")
@@ -58,6 +55,8 @@ public class GerenteAreaController {
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"")
 				.body(recurso);
 	}
+
+	
 
 	@GetMapping("/nuevo")
 	public String nuevoGerente(Model model) {
@@ -92,14 +91,10 @@ public class GerenteAreaController {
 			}
 
 		}
-		gerente.setPasswordUsuario(personaEncryp.getPasswordEncoder2().encode(gerente.getPasswordUsuario()));
-		boolean flag = gService.insertar(gerente);
-		if (flag) {
-			return "redirect:/gerentes/listar";
-		} else {
-			model.addAttribute("mensaje", "Ocurrió un error");
-			return "redirect:/gerentes/nuevo";
-		}
+		gService.insertar(gerente);
+		model.addAttribute("mensaje", "Se guardó correctamente");
+		status.setComplete();
+		return "redirect:/gerentes/listar";
 	}
 
 	@GetMapping("/listar")

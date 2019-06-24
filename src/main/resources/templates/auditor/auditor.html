@@ -86,40 +86,6 @@
 						<input type="file" name="file" class="form-control" />
 					</div>
 				</div>
-				
-				<div class="form-group">
-								<label for="usuario">USUARIO:</label> <input type="text"
-									class="form-control" th:field="*{userUsuario}" id="usuario"></input>
-								<div class="alert alert-danger"
-									th:if="${#fields.hasErrors('userUsuario')}"
-									th:errors="*{userUsuario}"></div>
-
-							</div>
-							<div class="form-group">
-								<label for="contraseña">CONTRASEÑA:</label> <input type="text"
-									class="form-control" th:field="*{passwordUsuario}"
-									id="contraseña"></input>
-								<div class="alert alert-danger"
-									th:if="${#fields.hasErrors('passwordUsuario')}"
-									th:errors="*{passwordUsuario}"></div>
-
-							</div>
-							<div class="form-group">
-								<label for="flag">TIPO USUARIO:</label> <input type="text"
-									th:field="*{tipoUsuario}" class="form-control" id="flag"></input>
-								<div class="alert alert-danger"
-									th:if="${#fields.hasErrors('tipoUsuario')}"
-									th:errors="*{tipoUsuario}"></div>
-							</div>
-							<div class="form-group">
-								<label for="estado">ESTADO:</label> <input type="text"
-									th:field="*{estadoUsuario}" class="form-control" id="estado"></input>
-								<div class="alert alert-danger"
-									th:if="${#fields.hasErrors('estadoUsuario')}"
-									th:errors="*{estadoUsuario}"></div>
-
-							</div>
-				
 
 
 				<div class="form-group row">

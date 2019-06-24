@@ -20,14 +20,9 @@ public class GerenteAreaServiceImpl implements IGerenteAreaService {
 
 	@Override
 	@Transactional
-	public boolean insertar(Gerente gerente) {
+	public void insertar(Gerente gerente) {
 
-		Gerente objGerente = gR.save(gerente);
-		if (objGerente == null) {
-			return false;
-		} else {
-			return true;
-		}
+		gR.save(gerente);
 
 	}
 

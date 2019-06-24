@@ -20,13 +20,8 @@ public class AuditorServiceImpl implements IAuditorService {
 
 	@Override
 	@Transactional
-	public boolean insertar(Auditor auditor) {
-		Auditor objAuditor = aR.save(auditor);
-		if (objAuditor == null) {
-			return false;
-		} else {
-			return true;
-		}
+	public void insertar(Auditor auditor) {
+		aR.save(auditor);
 	}
 
 	@Override

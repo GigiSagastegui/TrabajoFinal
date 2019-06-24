@@ -18,8 +18,7 @@
 						<input type="text" th:field="*{idDetalle}" class="form-control"
 							th:errorclass="'form-control alert-danger'" /> <small
 							class="form-text text-danger"
-							th:if="${#fields.hasErrors('idDetalle')}"
-							th:errors="*{idDetalle}"></small>
+							th:if="${#fields.hasErrors('idDetalle')}" th:errors="*{idDetalle}"></small>
 					</div>
 				</div>
 
@@ -48,30 +47,15 @@
 				</div>
 
 				<div class="form-group row">
-					<label for="resultadoAuditoria" class="col-sm-2 col-form-label">Resultado
-						Auditoria</label>
+					<label for="resultadoAuditoria" class="col-sm-2 col-form-label">Resultado Auditoria</label>
 					<div class="col-sm-6">
-						<input type="text" th:field="*{resultadoAuditoria}"
-							class="form-control" th:errorclass="'form-control alert-danger'" />
-						<small class="form-text text-danger"
+						<input type="text" th:field="*{resultadoAuditoria}" class="form-control"
+							th:errorclass="'form-control alert-danger'" /> <small
+							class="form-text text-danger"
 							th:if="${#fields.hasErrors('resultadoAuditoria')}"
 							th:errors="*{resultadoAuditoria}"></small>
 					</div>
 				</div>
-
-				<div class="form-group row">
-					<label for="resultadoAuditoria" class=" col-sm-2 col-form-label">Resultado:</label>
-					<div class="col-sm-6">
-						<select class="form-control" name="resultadoAuditoria">
-							<option disabled selected>Seleccionar...</option>
-							<option>Aprobado</option>
-
-							<option>Desaprobado</option>
-
-						</select>
-					</div>
-				</div>
-
 
 
 				<div class="form-group row">

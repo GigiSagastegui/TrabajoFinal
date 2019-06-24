@@ -39,9 +39,6 @@ public class AuditorController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 	
-	@Autowired
-	private PersonaController personaEncryp;
-	
 	@GetMapping(value = "/uploads/{filename:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
 
@@ -68,7 +65,7 @@ public class AuditorController {
 	}
 
 	@RequestMapping("/guardar")
-	public String guardarAuditor(@ModelAttribute @Valid Auditor auditor, BindingResult binRes,
+	public String guardarAdministrador(@ModelAttribute @Valid Auditor auditor, BindingResult binRes,
 			Model model, @RequestParam("file") MultipartFile foto, RedirectAttributes flash, SessionStatus status)
 			throws ParseException {
 		if (binRes.hasErrors()) {
@@ -95,15 +92,10 @@ public class AuditorController {
 			}
 
 		}
-		
-		auditor.setPasswordUsuario(personaEncryp.getPasswordEncoder2().encode(auditor.getPasswordUsuario()));
-		boolean flag = auService.insertar(auditor);
-		if (flag) {
-			return "redirect:/auditores/listar";
-		} else {
-			model.addAttribute("mensaje", "Ocurrió un error");
-			return "redirect:/auditores/nuevo";
-		}
+		auService.insertar(auditor);
+		model.addAttribute("mensaje", "Se guardó correctamente");
+		status.setComplete();
+		return "redirect:/auditores/listar";
 	}
 
 

@@ -33,48 +33,39 @@
 							th:errors="*{descripcionAuditoria}"></small>
 					</div>
 				</div>
-
 				<div class="form-group row">
-					<label for="estado" class=" col-sm-2 col-form-label">Estado:</label>
+					<label for="estado" class="col-sm-2 col-form-label">Estado</label>
 					<div class="col-sm-6">
-						<select class="form-control" name="estado">
-							<option disabled selected>Seleccionar...</option>
-							<option>Pendiente</option>
-							<option>En proceso</option>
-							<option>Finalizao</option>
-
-						</select>
+						<input type="text" th:field="*{estado}"
+							class="form-control" th:errorclass="'form-control alert-danger'"
+							required="required" /> <small class="form-text text-danger"
+							th:if="${#fields.hasErrors('estado')}"
+							th:errors="*{estado}"></small>
 					</div>
 				</div>
-
-				<div class="form-group row">
+				
+								<div class="form-group row">
 					<label for="estado" class="col-sm-2 col-form-label">Resultado</label>
 					<div class="col-sm-6">
-						<input type="text" th:field="*{resultado}" class="form-control"
-							th:errorclass="'form-control alert-danger'" required="required" />
-						<small class="form-text text-danger"
+						<input type="text" th:field="*{resultado}"
+							class="form-control" th:errorclass="'form-control alert-danger'"
+							required="required" /> <small class="form-text text-danger"
 							th:if="${#fields.hasErrors('resultado')}"
 							th:errors="*{resultado}"></small>
 					</div>
 				</div>
-
-
-
-				<div class="form-group row">
-					<label for="prioridad" class=" col-sm-2 col-form-label">Prioridad:</label>
+				
+								<div class="form-group row">
+					<label for="estado" class="col-sm-2 col-form-label">Prioridad</label>
 					<div class="col-sm-6">
-						<select class="form-control" name="prioridad">
-							<option disabled selected>Seleccionar...</option>
-							<option>Alta</option>
-
-							<option>Media</option>
-
-							<option>Baja</option>
-
-						</select>
+						<input type="text" th:field="*{prioridad}"
+							class="form-control" th:errorclass="'form-control alert-danger'"
+							required="required" /> <small class="form-text text-danger"
+							th:if="${#fields.hasErrors('prioridad')}"
+							th:errors="*{prioridad}"></small>
 					</div>
 				</div>
-
+				
 				<div class="form-group row">
 					<label for="fechaInicioAuditoria" class="col-sm-2 col-form-label">Fecha
 						de Inicio</label>
@@ -86,7 +77,7 @@
 							th:errors="*{fechaInicioAuditoria}"></small>
 					</div>
 				</div>
-
+				
 				<div class="form-group row">
 					<label for="fechaFinAuditoria" class="col-sm-2 col-form-label">Fecha
 						de Fin</label>
@@ -103,8 +94,8 @@
 					<label for="proceso" class=" col-sm-2 col-form-label">Proceso:</label>
 					<div class="col-sm-6">
 						<select class="form-control" th:field="*{proceso.idProceso}">
-							<option th:each="c: ${listaProcesos}" th:value="${c.idProceso}"
-								th:text="${c.descripcionProceso}"
+							<option th:each="c: ${listaProcesos}"
+								th:value="${c.idProceso}" th:text="${c.descripcionProceso}"
 								th:selected="(${c.idProceso} == *{proceso.idProceso})"></option>
 						</select>
 					</div>

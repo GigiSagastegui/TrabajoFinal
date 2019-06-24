@@ -66,34 +66,13 @@ public abstract class Persona implements Serializable {
 
 	private String foto;
 
-	@NotEmpty(message = "No puede estar vacío")
-	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "estadoUsuario", nullable = false)
-	private String estadoUsuario;
-
-	@NotEmpty(message = "No puede estar vacío")
-	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "tipoUsuario", nullable = false)
-	private String tipoUsuario;
-
-	@NotEmpty(message = "No puede estar vacío")
-	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "userUsuario", nullable = false)
-	private String userUsuario;
-
-	@NotEmpty(message = "No puede estar vacío")
-	@NotBlank(message = "No puede estar en blanco")
-	@Column(name = "passwordUsuario", nullable = false)
-	private String passwordUsuario;
-
 	public Persona() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Persona(int idPersona, String namePersona, String telPersona, String direccionPersona, String dniPersona,
-			Date birthDatePersona, String emailPersona, String foto, String estadoUsuario, String tipoUsuario,
-			String userUsuario, String passwordUsuario) {
+			Date birthDatePersona, String emailPersona, String foto) {
 		super();
 		this.idPersona = idPersona;
 		this.namePersona = namePersona;
@@ -103,12 +82,8 @@ public abstract class Persona implements Serializable {
 		this.birthDatePersona = birthDatePersona;
 		this.emailPersona = emailPersona;
 		this.foto = foto;
-		this.estadoUsuario = estadoUsuario;
-		this.tipoUsuario = tipoUsuario;
-		this.userUsuario = userUsuario;
-		this.passwordUsuario = passwordUsuario;
-	}	
-	
+	}
+
 	public int getIdPersona() {
 		return idPersona;
 	}
@@ -171,38 +146,6 @@ public abstract class Persona implements Serializable {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
-	}
-
-	public String getEstadoUsuario() {
-		return estadoUsuario;
-	}
-
-	public void setEstadoUsuario(String estadoUsuario) {
-		this.estadoUsuario = estadoUsuario;
-	}
-
-	public String getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(String tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
-
-	public String getUserUsuario() {
-		return userUsuario;
-	}
-
-	public void setUserUsuario(String userUsuario) {
-		this.userUsuario = userUsuario;
-	}
-
-	public String getPasswordUsuario() {
-		return passwordUsuario;
-	}
-
-	public void setPasswordUsuario(String passwordUsuario) {
-		this.passwordUsuario = passwordUsuario;
 	}
 
 	@Override

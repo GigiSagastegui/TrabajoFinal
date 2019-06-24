@@ -7,7 +7,7 @@ import pe.edu.upc.entity.Auditor;
 
 public interface IAuditorService {
 	
-	public boolean insertar(Auditor auditor);
+	public void insertar(Auditor auditor);
 
 	public void modificar(Auditor auditor);
 

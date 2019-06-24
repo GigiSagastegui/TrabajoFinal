@@ -8,7 +8,7 @@ import pe.edu.upc.entity.Gerente;
 
 public interface IGerenteAreaService {
 
-	public boolean insertar(Gerente gerente);
+	public void insertar(Gerente gerente);
 
 	public void modificar(Gerente gerente);
 
