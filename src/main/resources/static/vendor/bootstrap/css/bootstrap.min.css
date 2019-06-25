@@ -71,7 +71,7 @@ body {
 	line-height: 1.5;
 	color: #212529;
 	text-align: left;
-	background-color: #a61493
+	background-color: #ff8000
 }
 
 [tabindex="-1"]:focus {
@@ -160,7 +160,7 @@ sup {
 a {
 	color: #007bff;
 	text-decoration: none;
-	background-color: #a61493;
+	background-color: #ff8000;
 	-webkit-text-decoration-skip: objects
 }
 
@@ -4877,7 +4877,7 @@ tbody.collapse.show {
 .badge-danger[href]:focus, .badge-danger[href]:hover {
 	color: #fff;
 	text-decoration: none;
-	background-color: #bd2130
+	background-color: #0080ff
 }
 
 .badge-light {
@@ -5105,7 +5105,7 @@ to {
 	justify-content: center;
 	color: #fff;
 	text-align: center;
-	background-color: #007bff;
+	background-color: #ffffff;
 	transition: width .6s ease
 }
 
@@ -5198,7 +5198,7 @@ to {
 .list-group-item.active {
 	z-index: 2;
 	color: #fff;
-	background-color: #007bff;
+	background-color: #ffffff;
 	border-color: #007bff
 }
 
@@ -6140,9 +6140,9 @@ a.bg-light:focus, a.bg-light:hover, button.bg-light:focus, button.bg-light:hover
 }
 
 .bg-dark {
-	background-color: #a61493 !important
+	background-color: #ff8000 !important
 	border-bottom:solid ;
-	border-color:#a61493;
+	border-color:#ff8000;
 }
 
 a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover

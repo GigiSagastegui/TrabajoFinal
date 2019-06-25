@@ -141,7 +141,7 @@ public class AuditoriaController {
 			return "redirect:/auditorias/listar";
 		} else {
 			model.addAttribute("listaProcesos", prService.listar());
-
+			model.addAttribute("listaProgramas", pService.listar());
 			model.addAttribute("auditoria", objAudi.get());
 			return "auditoria/auditoria";
 		}

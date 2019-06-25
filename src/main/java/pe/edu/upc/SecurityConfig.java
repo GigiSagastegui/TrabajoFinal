@@ -35,26 +35,82 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		try {
 			http.authorizeRequests()
 
-			//Area
-			.antMatchers("/areas/nuevo/**").access("hasRole('ROLE_ADMINISTRADOR') ")
-			.antMatchers("/areas/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE') ")
-			//Informe
+			//Gerente			
+			.antMatchers("/gerentes/nuevo/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/gerentes/listar/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/gerentes/detalle/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/gerentes/ver/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/gerentes/buscar/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			//Administrador
+			.antMatchers("/administradores/listar/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/administradores/detalle/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/administradores/ver/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/administradores/buscar/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			//Auditor
+			.antMatchers("/auditores/nuevo/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/auditores/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/auditores/detalle/**").access("hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/auditores/ver/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/auditores/buscar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_GERENTE')")
 			
+			//Area 
+			.antMatchers("/areas/nuevo/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/areas/listar/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') ")
+			.antMatchers("/areas/buscar/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') ")
+			.antMatchers("/areas/modificar/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR')")
+			
+			//Informe			
 			.antMatchers("/informes/nuevo/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR') ")
 			.antMatchers("/informes/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE') ")
+			.antMatchers("/informes/buscar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE') ")
+			.antMatchers("/informes/modificar/**").access("hasRole('ROLE_GERENTE')or hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/informes/ver/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
 			
-			.antMatchers("/gerentes/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
-			.antMatchers("/auditores/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
-			.antMatchers("/administradores/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
-			.antMatchers("/tareas/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
-			.antMatchers("/detalles/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
-			.antMatchers("/procesos/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
-			.antMatchers("/auditorias/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
-			.antMatchers("/bienvenido/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
-			//equipo
+			//Procesos			
+			.antMatchers("/procesos/nuevo/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/procesos/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/procesos/buscar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/procesos/modificar/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/procesos/ver/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
 			
-			.antMatchers("/equipos/nuevo/**").access("hasRole('ROLE_AUDITOR') or hasRole('ROLE_ADMINISTRADOR')")
-			.antMatchers("/equipos/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')").and()
+			//programa			
+			.antMatchers("/programas/nuevo/**").access("hasRole('ROLE_AUDITOR')or hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/programas/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/programas/modificar/**").access("hasRole('ROLE_AUDITOR')or hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/programas/ver/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			
+			//Tarea
+			
+			.antMatchers("/tareas/nuevo/**").access("hasRole('ROLE_GERENTE') or hasRole('ROLE_ADMINISTRADOR')")
+			.antMatchers("/tareas/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/tareas/modificar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_GERENTE')")
+			
+			//Auditoria
+			
+			.antMatchers("/auditorias/nuevo/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
+			.antMatchers("/auditorias/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/auditorias/buscar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/auditorias/modificar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
+			.antMatchers("/auditorias/ver/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			
+			//Integrantes
+			
+			.antMatchers("/equipos/nuevo/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
+			.antMatchers("/equipos/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/equipos/buscar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/equipos/modificar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
+			
+			//Detalle
+			
+			.antMatchers("/detalles/nuevo/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
+			.antMatchers("/detalles/listar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/detalles/buscar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			.antMatchers("/detalles/modificar/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR')")
+			.antMatchers("/detslles/ver/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')")
+			
+			//otros
+			
+			.antMatchers("/bienvenido/**").access("hasRole('ROLE_ADMINISTRADOR') or hasRole('ROLE_AUDITOR') or hasRole('ROLE_GERENTE')").and()
 
 					.formLogin().loginPage("/login").loginProcessingUrl("/j_spring_security_check")
 					.defaultSuccessUrl("/bienvenido/").failureUrl("/login?error").usernameParameter("usuario")

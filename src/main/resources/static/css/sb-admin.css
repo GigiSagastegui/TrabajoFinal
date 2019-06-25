@@ -226,7 +226,7 @@ body.fixed-nav {
 }
 
 #mainNav.fixed-top.navbar-dark .sidenav-toggler {
-  background-color: #ab12bc;
+  background-color: #ff8000;
 }
 
 #mainNav.fixed-top.navbar-dark .sidenav-toggler a i {
@@ -294,18 +294,18 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
 
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 3px solid #ab12bc;
+  border-bottom: 3px solid #ff8000;
   background-color: #ffffff;
 }
 
 
 .table-bordered th,
 .table-bordered td {
-  border: 2px solid #ab12bc; 
+  border: 2px solid #ff8000; 
 }
 
 .table-hover tbody tr:hover {
-  background-color: #a61493 transparent  ;
+  background-color: #ff8000 transparent  ;
 
 }
 
@@ -376,7 +376,7 @@ background-color: #c0c0c0;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link:hover {
-  color: #a61493;
+  color: #ff8000;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,
@@ -391,7 +391,7 @@ background-color: #c0c0c0;
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:focus, #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a:hover,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:focus,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level > li > a:hover {
-  color: #a61493;
+  color: #ff8000;
   background-color: #c0c0c0;
   
 }
@@ -404,18 +404,18 @@ background-color: #c0c0c0;
 
 @media (min-width: 992px) {
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
-    background: #a61493;
+    background: #ff8000;
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
     color: white !important;
-    background-color: #ab12bc;
+    background-color: #ff8000;
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:focus, #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a:hover {
     color: white;
   }
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level,
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-third-level {
-    background: #ab12bc;
+    background: #ff8000;
   }
 }
 

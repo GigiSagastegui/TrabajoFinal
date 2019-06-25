@@ -1,78 +1,417 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/layout :: head"></head>
-<meta charset="UTF-8"></meta>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<title>Game Zone</title>
+<link rel="icon" type="image/ico" href="/imagenes1/logo.ico" />
+<!-- Bootstrap core CSS-->
+<link rel="stylesheet"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" />
+<!-- Custom fonts for this template-->
+<link rel="stylesheet"
+	th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" />
+<!-- Page level plugin CSS-->
+<link rel="stylesheet"
+	th:href="@{/vendor/datatables/dataTables.bootstrap4.css}" />
+<!-- Custom styles for this template-->
+<link rel="stylesheet" th:href="@{/css/sb-admin.css}" />
 
-<body>
-	<header th:replace="layout/layout :: header"></header>
+</head>
 
-	<div class="container">
-		<div align="right">
-			<a th:href="@{/auditores/nuevo}"
-				id="add-row" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+		id="mainNav">
+		<a class="navbar-brand" th:href="@{/index}">Game Zone ♠ </a>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Components"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseComponents" data-parent="#exampleAccordion"> <i
+						class="	fa fa-user"></i> <span class="nav-link-text">ADMINISTRADOR</span>
+				</a>
+					<ul class="sidenav-second-level collapse" id="collapseComponents">
+
+						<li><a th:href="@{/administradores/listar}"> <i
+								class="fa fa-list-ol"></i>Listar
+						</a></li>
+
+					</ul></li>
+
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages" data-parent="#exampleAccordion"> <i
+						class="fa fa-user"></i> <span class="nav-link-text">AUDITOR</span>
+				</a>
+					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
+
+						<li><a th:href="@{/auditores/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/auditores/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages2" data-parent="#exampleAccordion">
+						<i class="fa fa-user"></i> <span class="nav-link-text">GERENTE</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages2">
+
+						<li><a th:href="@{/gerentes/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/gerentes/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages3" data-parent="#exampleAccordion">
+						<i class="fa fa-building"></i> <span class="nav-link-text">AREA</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages3">
+
+						<li><a th:href="@{/areas/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/areas/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages4" data-parent="#exampleAccordion">
+						<i class="	fa fa-sitemap"></i> <span class="nav-link-text">PROCESO</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages4">
+
+						<li><a th:href="@{/procesos/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/procesos/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages7" data-parent="#exampleAccordion">
+						<i class="	fa fa-clone"></i> <span class="nav-link-text">TAREAS</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages7">
+
+						<li><a th:href="@{/tareas/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/tareas/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages10" data-parent="#exampleAccordion">
+						<i class="	fa fa-address-card"></i> <span class="nav-link-text">INFORME</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages10">
+
+						<li><a th:href="@{/informes/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/informes/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages12" data-parent="#exampleAccordion">
+						<i class="	fa fa-address-card"></i> <span class="nav-link-text">PROGRAMAS</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages12">
+
+						<li><a th:href="@{/programas/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/programas/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+
+
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages13" data-parent="#exampleAccordion">
+						<i class="	fa fa-book"></i> <span class="nav-link-text">AUDITORÍA</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages13">
+
+						<li><a th:href="@{/auditorias/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/auditorias/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages14" data-parent="#exampleAccordion">
+						<i class="fa fa-users"></i> <span class="nav-link-text">INTEGRANTES</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages14">
+
+						<li><a th:href="@{/equipos/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/equipos/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+
+
+
+
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Example Pages"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseExamplePages16" data-parent="#exampleAccordion">
+						<i class="fa fa-clone"></i> <span class="nav-link-text">DETALLE
+							AUDITORIA</span>
+				</a>
+					<ul class="sidenav-second-level collapse"
+						id="collapseExamplePages16">
+
+						<li><a th:href="@{/detalles/listar}"> <i
+								class="fa fa-list-ol" aria-hidden="true"></i> Listar
+						</a></li>
+						<li><a th:href="@{/detalles/nuevo}"> <i
+								class="fa fa-pencil-square-o" aria-hidden="true"></i> Registrar
+						</a></li>
+					</ul></li>
+
+
+
+
+			</ul>
+
+			<ul class="navbar-nav sidenav-toggler">
+				<li class="nav-item"><a class="nav-link text-center"
+					id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i>
+				</a></li>
+			</ul>
+
+			<ul class="navbar-nav ml-auto">
+
+				<li class="nav-item"></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="modal"
+					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"></i>Cerrar
+						Sesion
+				</a></li>
+			</ul>
+
+
+
+
 		</div>
-		<div>
-			<form th:action="@{/auditores/buscar}" method="post"
-				th:object="${auditor}">
-				<div class="form-group">
+	</nav>
 
-					<label for="auditor">Buscar:</label> <input type="text"
-						class="form-control" th:field="*{namePersona}" id="auditor"></input>
-					<div align="right">
-						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
-						<a href="/auditores/listar" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div class="content-wrapper-calidad">
+				<div class="container-fluid">
+					<div class="card card-register mx-auto mt-5">
+
+						<div class="container">
+							<div align="right">
+								<a th:href="@{/auditores/nuevo}" id="add-row" type="button"
+									class="btn btn-primary"><span class="fa fa-plus"></span></a>
+							</div>
+							<div>
+								<form th:action="@{/auditores/buscar}" method="post"
+									th:object="${auditor}">
+									<div class="form-group">
+
+										<label for="auditor">Buscar:</label> <input type="text"
+											class="form-control" th:field="*{namePersona}" id="auditor"></input>
+										<div align="right">
+											<button type="submit" class="btn btn-success">
+												<span class="fa fa-search"></span>
+											</button>
+											<a href="/auditores/listar" class="btn btn-danger"><span
+												class="fa fa-remove"></span></a>
+										</div>
+									</div>
+
+								</form>
+
+							</div>
+
+							<div class="card">
+								<div class="font-weight-bold" align="center">
+									<font size=6> Reporte de Auditores</font>
+								</div>
+								<div class="card-body">
+
+									<div class="table-responsive">
+										<table class="table table-bordered table-hover table-striped"
+											id="tab_logic">
+											<thead>
+												<tr>
+													<th>Id</th>
+													<th>Auditor</th>
+													<th>Fecha de Nacimiento</th>
+													<th>Email</th>
+													<th>DNI</th>
+													<th>Direccion</th>
+													<th>Telefono</th>
+													<th align="center">Actualizar</th>
+												</tr>
+											</thead>
+											<tbody id="auditor-list">
+												<tr th:each="auditor:${listaAuditores}">
+													<td><a class="btn btn-info btn-xs"
+														th:href="@{/auditores/ver/} + ${auditor.idPersona}"
+														th:text="${auditor.idPersona}"></a></td>
+													<td th:text="${auditor.namePersona}"></td>
+													<td
+														th:text="${#dates.format(auditor.birthDatePersona,'dd/MM/yyyy')}"></td>
+													<td th:text="${auditor.emailPersona}"></td>
+													<td th:text="${auditor.dniPersona}"></td>
+													<td th:text="${auditor.DireccionPersona}"></td>
+													<td th:text="${auditor.TelPersona}"></td>
+													<td align="center"><a
+														th:href="@{'/auditores/detalle/' + ${auditor.idPersona}}"><span
+															class="fa fa-pencil"></span></a></td>
+												</tr>
+											</tbody>
+										</table>
+										<div th:if="${mensaje}" class="alert alert-info">
+											<p th:text="${mensaje}"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
 					</div>
-				</div>
 
-			</form>
+					<!-- /.container-fluid-->
+					<!-- /.content-wrapper-->
 
-		</div>
+					<footer class="sticky-footer">
+						<div class="container">
+							<div class="text-center">
+								<small>Todos los Derechos Reservados Copyright©2019-1
+									Prohibida su reproducción total o parcial sin el permiso de
+									Team Progra 2019</small>
+							</div>
+						</div>
+					</footer>
+					<!-- Scroll to Top Button-->
+					<a class="scroll-to-top rounded" href="#page-top"> <i
+						class="fa fa-angle-up"></i>
+					</a>
 
-		<div class="card">
-			<div class="card-header text-white bg-dark mb-3">Reporte de
-				Auditores</div>
-			<div class="card-body">
 
-				<div class="table-responsive">
-					<table class="table table-white">
-						<thead class="bg-dark mb-3 text-white">
-							<tr>
-								<th>Id</th>
-								<th>Auditor</th>
-								<th>Fecha de Nacimiento</th>
-								<th>Email</th>
-								<th>DNI</th>
-								<th>Direccion</th>
-								<th>Telefono</th>								
-								<th align="center">Operación</th>
-							</tr>
-						</thead>
-						<tbody id="auditor-list">
-							<tr th:each="auditor:${listaAuditores}">
-								<td><a class="btn btn-info btn-xs"
-									th:href="@{/auditores/ver/} + ${auditor.idPersona}"
-									th:text="${auditor.idPersona}"></a></td>
-								<td th:text="${auditor.namePersona}"></td>
-								<td
-									th:text="${#dates.format(auditor.birthDatePersona,'dd/MM/yyyy')}"></td>
-								<td th:text="${auditor.emailPersona}"></td>
-								<td th:text="${auditor.dniPersona}"></td>
-								<td th:text="${auditor.DireccionPersona}"></td>
-								<td th:text="${auditor.TelPersona}"></td>
-								<td align="center"><a
-									th:href="@{'/auditores/detalle/' + ${auditor.idPersona}}"><span
-										class="glyphicon glyphicon-edit"></span></a></td>
-							</tr>
-						</tbody>
-					</table>
-					<div th:if="${mensaje}" class="alert alert-info">
-						<p th:text="${mensaje}"></p>
+					<!-- Logout Modal-->
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">¿Esta
+										seguro que desea salir?</h5>
+									<button class="close" type="button" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body">Le recordamos que todo cambio está
+									almacenado en nuestra base de datos</div>
+								<div class="modal-footer">
+									<form id="logoutForm" th:action="@{/j_spring_security_logout}"
+										method="post">
+										<button class="btn btn-secondary" type="button"
+											data-dismiss="modal">Cancelar</button>
+										<button class="btn btn-primary"
+											onclick="document.getElementById('logoutForm').submit();"
+											type="submit">Salir</button>
+									</form>
+								</div>
+							</div>
+						</div>
 					</div>
+
+
+
+					<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+					<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+					<!-- Core plugin JavaScript-->
+					<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+					<!-- Page level plugin JavaScript-->
+					<script th:src="@{/vendor/chart.js/Chart.min.js}"></script>
+					<script th:src="@{/vendor/datatables/jquery.dataTables.js}"></script>
+					<script th:src="@{/vendor/datatables/dataTables.bootstrap4.js}"></script>
+					<!-- Custom scripts for all pages-->
+					<script th:src="@{/js2/sb-admin.min.js}"></script>
+					<!-- Custom scripts for this page-->
+					<script th:src="@{/js2/sb-admin-datatables.min.js}"></script>
+					<script th:src="@{/js2/sb-admin-charts.min.js}"></script>
+
+
+
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<footer th:replace="layout/layout :: footer"></footer>
 </body>
+
+
+
+
 </html>
